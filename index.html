@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Writable</title>
+<link rel="stylesheet" href="style.css">
+<script src="main.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+<script src="lib/codemirror.js"></script>
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="mode/javascript/javascript.js"></script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css">
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.css">
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/1fe7acc072.js" crossorigin="anonymous"></script>
+    <div id="main">
+        <div id="list">
+            <h1 id="list-title">List</h1>
+            <svg id="notes-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M52.9737 62.9794C52.2422 63.6338 51.293 63.9983 50.3064 63.9981L45.7143 63.9975L20.0003 63.9997C17.7911 63.9999 16 62.2089 16 59.9997L16 20C16 17.7909 17.7909 16 20 16L60 16C62.2091 16 64 17.7909 64 20V50.2832V50.3068C64 51.2736 63.65 52.2043 63.0202 52.9295C63.2849 52.5341 63.0095 51.967 62.5 51.967H56C53.7908 51.967 52 53.7578 52 55.967V62.4669C52 62.9813 52.5779 63.257 52.9737 62.9794Z"
+                    fill="#F2C94C" />
+                <path
+                    d="M50.3064 63.9981L50.3061 65.9981L50.3064 63.9981ZM52.9737 62.9794L51.8253 61.342C52.6921 60.7341 53.8824 60.907 54.5405 61.7363C55.1985 62.5657 55.0962 63.7642 54.3072 64.47L52.9737 62.9794ZM45.7143 63.9975L45.7141 61.9975H45.7146L45.7143 63.9975ZM20.0003 63.9997L20.0005 65.9997L20.0003 63.9997ZM16 59.9997L18 59.9997L16 59.9997ZM16 20H14H16ZM60 16V14V16ZM63.0202 52.9295L64.5302 54.241C63.8377 55.0383 62.6447 55.1598 61.8057 54.5186C60.9667 53.8773 60.7708 52.6943 61.3583 51.8168L63.0202 52.9295ZM50.3066 61.9981C50.7999 61.9982 51.2745 61.816 51.6402 61.4888L54.3072 64.47C53.2098 65.4517 51.7861 65.9983 50.3061 65.9981L50.3066 61.9981ZM45.7146 61.9975L50.3066 61.9981L50.3061 65.9981L45.714 65.9975L45.7146 61.9975ZM20.0002 61.9997L45.7141 61.9975L45.7145 65.9975L20.0005 65.9997L20.0002 61.9997ZM18 59.9997C18 61.1043 18.8955 61.9998 20.0002 61.9997L20.0005 65.9997C16.6866 65.9999 14 63.3136 14 59.9997L18 59.9997ZM18 20L18 59.9997L14 59.9997L14 20H18ZM20 18C18.8954 18 18 18.8954 18 20H14C14 16.6863 16.6863 14 20 14V18ZM60 18L20 18V14L60 14V18ZM62 20C62 18.8954 61.1046 18 60 18V14C63.3137 14 66 16.6863 66 20H62ZM62 50.2832L62 20H66V50.2832H62ZM62 50.3068V50.2832H66V50.3068H62ZM61.5101 51.6181C61.825 51.2556 62 50.7902 62 50.3068H66C66 51.757 65.475 53.1531 64.5302 54.241L61.5101 51.6181ZM62.5 49.967C64.6698 49.967 65.8024 52.369 64.682 54.0423L61.3583 51.8168C60.7675 52.6992 61.3493 53.967 62.5 53.967V49.967ZM56 49.967H62.5V53.967H56V49.967ZM50 55.967C50 52.6533 52.6863 49.967 56 49.967V53.967C54.8954 53.967 54 54.8624 54 55.967H50ZM50 62.4669V55.967H54V62.4669H50ZM54.1221 64.6169C52.4461 65.7923 50 64.6551 50 62.4669H54C54 61.3075 52.7097 60.7218 51.8253 61.342L54.1221 64.6169Z"
+                    fill="#F2C94C" />
+                <path
+                    d="M62.9393 53.0604L53.0606 62.939C52.6692 63.3304 52 63.0532 52 62.4997V55.9997C52 53.7906 53.7909 51.9997 56 51.9997H62.5C63.0535 51.9997 63.3307 52.669 62.9393 53.0604Z"
+                    fill="#F2994A" />
+                <path
+                    d="M53.0606 62.939L54.4748 64.3532L54.4748 64.3532L53.0606 62.939ZM62.9393 53.0604L64.3535 54.4746L64.3535 54.4746L62.9393 53.0604ZM51.6464 61.5248L61.5251 51.6461L64.3535 54.4746L54.4748 64.3532L51.6464 61.5248ZM50 62.4997V55.9997H54V62.4997H50ZM56 49.9997H62.5V53.9997H56V49.9997ZM50 55.9997C50 52.686 52.6863 49.9997 56 49.9997V53.9997C54.8954 53.9997 54 54.8951 54 55.9997H50ZM61.5251 51.6461C60.6566 52.5147 61.2717 53.9997 62.5 53.9997V49.9997C64.8353 49.9997 66.0049 52.8232 64.3535 54.4746L61.5251 51.6461ZM54.4748 64.3532C52.8235 66.0045 50 64.835 50 62.4997H54C54 61.2714 52.515 60.6563 51.6464 61.5248L54.4748 64.3532Z"
+                    fill="#F2994A" />
+            </svg>
+            <svg id="add" width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.7637 40L37.7637 40L41.7637 40L61.7637 40" stroke="#EB5757" stroke-width="4"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M39.7637 18L39.7637 38L39.7637 42L39.7637 62" stroke="#F2994A" stroke-width="4"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <div class="toolbar">
+            <ul class="tool-list">
+                <li class="tool">
+                    <button type="button" data-command='justifyLeft' class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command='justifyCenter' class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26 51.9648L54 51.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M26 27.9648L54 27.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command="bold" class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 41H41V35H24V41ZM41 41H43V35H41V41ZM41 13H24.5V19H41V13ZM43 61H24.5V67H43V61ZM21 16.5V38H27V16.5H21ZM21 38V63.5H27V38H21ZM41 41C48.732 41 55 34.732 55 27H49C49 31.4183 45.4183 35 41 35V41ZM41 19C45.4183 19 49 22.5817 49 27H55C55 19.268 48.732 13 41 13V19ZM43 41C48.5228 41 53 45.4772 53 51H59C59 42.1634 51.8366 35 43 35V41ZM24.5 61C25.8807 61 27 62.1193 27 63.5H21C21 65.433 22.567 67 24.5 67V61ZM53 51C53 56.5229 48.5228 61 43 61V67C51.8366 67 59 59.8366 59 51H53ZM24.5 13C22.567 13 21 14.567 21 16.5H27C27 17.8807 25.8807 19 24.5 19V13Z"
+                                fill="#C2CCDE" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command="italic" class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 16H55" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M25 64H45" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M45 16L35 64" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command="underline" aasdsasdssadasssssdsd class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M52.1128 24.6127L52.1128 60.1127C52.1128 66.7401 46.7402 72.1127 40.1128 72.1127V72.1127C33.4854 72.1127 28.1128 66.7401 28.1128 60.1127L28.1128 17.1127C28.1128 12.1421 32.1422 8.1127 37.1128 8.1127V8.1127C42.0834 8.1127 46.1128 12.1421 46.1128 17.1127V53.1127C46.1128 56.4264 43.4265 59.1127 40.1128 59.1127V59.1127C36.7991 59.1127 34.1128 56.4264 34.1128 53.1127L34.1128 24.6127"
+                                stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command='justifyLeft' class="tool--btn">
+                        <svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.8188 21.544C16.7533 22.492 15.3188 24.5785 15.3188 27V59C15.3188 62.3137 18.0051 65 21.3188 65H53.3188C55.7403 65 57.8268 63.5655 58.7748 61.5H27.3188C22.6244 61.5 18.8188 57.6944 18.8188 53V21.544Z"
+                                fill="#C2CCDE" />
+                            <path
+                                d="M49.9708 24.6651C50.805 24.1834 51.8327 24.1834 52.6669 24.6651C53.5011 25.1467 54.015 26.0368 54.015 27C54.015 27.9632 53.5011 28.8533 52.6669 29.3349C51.8327 29.8166 50.805 29.8166 49.9708 29.3349C49.1366 28.8533 48.6227 27.9632 48.6227 27C48.6227 26.0368 49.1366 25.1467 49.9708 24.6651Z"
+                                fill="#C2CCDE" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M21.3188 21C21.3188 17.6863 24.0051 15 27.3188 15H59.3188C62.6326 15 65.3188 17.6863 65.3188 21V50.4644L60.7938 45.9393C59.4269 44.5725 57.2108 44.5725 55.844 45.9393L53.18 48.6033L39.8989 34.1149C38.5117 32.6016 36.126 32.6016 34.7388 34.1149L21.3188 48.7548V21ZM55.1669 20.3349C52.7857 18.9602 49.852 18.9602 47.4708 20.3349C45.0896 21.7097 43.6227 24.2504 43.6227 27C43.6227 29.7496 45.0896 32.2903 47.4708 33.6651C49.852 35.0398 52.7857 35.0398 55.1669 33.6651C57.5481 32.2903 59.015 29.7496 59.015 27C59.015 24.2504 57.5481 21.7097 55.1669 20.3349Z"
+                                fill="#C2CCDE" />
+                            <path
+                                d="M37.3189 38.6997L23.8417 53.4021C24.0411 55.1457 25.5218 56.5 27.3188 56.5H59.3188C60.6602 56.5 61.8291 55.7439 62.4162 54.6329L58.3189 50.5355L55.6078 53.2466C54.1987 54.6557 51.8993 54.6057 50.5529 53.1368L37.3189 38.6997Z"
+                                fill="#C2CCDE" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="output" contenteditable="true">
+        </div>
+        <div id="organizer">
+            <div>
+                <details>
+                    <summary>
+                        <h1 id="organizer-title-to-do">To Do <i id="to-do-circle" class="fas fa-circle"></i> </h1>
+                    </summary>
+                    <ol id="to-do-list">
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                    </ol>
+                </details>
+            </div>
+            <div>
+                <details>
+                    <summary>
+                        <h1 id="organizer-title-in-process">In Process <i id="in-process-circle" class="fas fa-circle"></i> </h1>
+                    </summary>
+                    <ol id="in-process-list">
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                    </ol>
+                </details>
+            </div>
+            <div>
+                <details>
+                    <summary>
+                        <h1 id="organizer-title-finished">Finished <i id="finished-circle" class="fas fa-circle"></i></h1>
+                    </summary>
+                    <ol id="finished-list">
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                        <li class="list-item"><p>Create a New Banner</p></li>
+                    </ol>
+                </details>
+            </div>
+        </div>
+    </div>
+    <script src="./renderer.js"></script>
+</body>
+</html>
