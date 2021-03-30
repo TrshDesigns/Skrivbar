@@ -1,12 +1,12 @@
 {
-  "name": "electron-quick-start",
+  "name": "Skrivbar",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A Text Editor App",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/TrshDesigns/Skrivbar.git",
   "keywords": [
     "Electron",
     "quick",
@@ -14,8 +14,8 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "TrshDesigns",
+  "license": "no",
   "devDependencies": {
     "electron": "^12.0.2"
   }
