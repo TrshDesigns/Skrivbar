@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url("https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1504&q=80");
+  background-image: url("");
   height: 100%;
   background-repeat:no-repeat;
   background-size:cover;
@@ -14,16 +14,21 @@ body {
   bottom: 18px;
 }
 .tool-list {
-  resize: both;
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  height:90vh;
+  width:50px;
+  max-width:50px;
+  max-height:99vh;
+  resize:both;
   overflow: auto;
   top: 0px;
-  display: list-item;
-  flex-flow: row nowrap;
   list-style: none;
   padding: 0;
   overflow: hidden;
   border-radius: 1px;
-  background: rgba(52, 51, 51, 0.25);
+  background: rgb(255, 255, 255);
   box-shadow: 0 8px 32px 0 rgba(114, 173, 236, 0.774);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -32,7 +37,6 @@ body {
   margin-left: 5px;
 }
 .tool--btn {
-  display: block;
   border: 1px solid rgba(37, 50, 113, 0);
   font-size: 20px;
   box-shadow: 0 8px 32px 0 rgb(255, 255, 255);
@@ -60,13 +64,13 @@ body {
   border: none;
   margin-right: 5px;
   margin-left: 5px;
-  background: rgba(255, 255, 255, 0.549);
+  background: rgba(255, 255, 255, 0.534);
   color:rgb(3, 0, 23);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.552);
     resize: both;
   overflow: auto;
 }
@@ -114,7 +118,7 @@ body {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 .titles {
   position: relative;
@@ -152,10 +156,6 @@ summary::marker {
   color: rgba(3, 21, 34, 0.736);
   z-index:1;
 }
-details:focus,
-summary:focus {
-  outline: none;
-}
 #list-title {
   position: relative;
   top: 0px;
@@ -170,6 +170,31 @@ summary:focus {
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 22px;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 13px;
+  border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(36, 37, 38, 0.062);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: royalblue;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(50, 89, 204);
+  border-radius: 10px;
+}
+
 #organizer-title-in-process {
   font-family: "Noto Serif SC", serif;
   position: relative;
@@ -216,12 +241,76 @@ summary:focus {
   border-top:6px solid #00CA4E
 }
 svg{
-  transition:0.6s ease-in-out;
+  transition:0.3s ease-in-out;
+  width:auto;
+  height:auto;
 }
 svg:hover{
 transition: 0.1s ease-in-out;
-transform: translateY(-5px);
-transform: rotate(5deg);
+transform: translateY(-7px);
+  background-color: gainsboro;
+  border-radius:5px;
+}
+#myColor{
+  width:35px;
+  height:35px;
+  margin-bottom:10px;
+  border: 3.5px solid rgb(0, 132, 255);
+  border-radius:10px;
+  transition:0.3s ease-in-out;
+}
+#myColor:hover{
+  transition: 0.3s ease-in-out;
+  transform: translateY(-7px);
+  background-color: gainsboro;
+}
+.no-outline:focus{
+  outline:none
+}
+#fontSize{
+  width:35px;
+  height:35px;
+  background-color:white;
+  outline:none;
+  border: 3.5px solid rgb(0, 132, 255);
+  border-radius:10px;
+  transition:0.3s ease-in-out;
+}
+#fontSize:hover{
+  transition: 0.3s ease-in-out;
+  transform: translateY(-7px);
+  background-color: gainsboro;
+}
+
+#rotated-align{
+  transform: rotate(180deg);
+}
+#input-font{
+  height:35px;
+  width:35px;
+  font-size:11px;
+  border-radius:10px;
+  background-color:white;
+  border:3.5px solid rgb(0, 132, 255);
+}
+#rotated-undo::after{
+  transform:rotate(180deg);
+}
+#arial{
+  font-family: Arial;
+}
+#helvetica{
+  font-family: Helvetica;
+}
+#rotated-undo{
+  transform:rotate(180deg);
+}
+#rotated-undo:hover{
+  background-color:rgb(196, 226, 254);
+}
+#undo:hover{
+  background-color:rgb(196, 226, 254);
+  transform:none;
 }
 #organizer-title-to-do {
   font-family: "Noto Serif SC", serif;
@@ -269,5 +358,5 @@ transform: rotate(5deg);
   color:#FFBD44
 }
 .list-title{
-  background-color:white;
+  background-color:rgb(205, 122, 122);
 }
