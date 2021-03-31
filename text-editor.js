@@ -23,4 +23,7 @@ function chooseColor(){
   function removeBorder(){
     document.getElementById("output").style.border = '1px solid transparent';
   }
- 
+  function changebackground(){
+    var url = document.getElementById('bgchanger').value;
+    document.getElementsByTagName('body')[0].style.backgroundImage = "url('" + url + "')";
+}
