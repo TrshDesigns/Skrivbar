@@ -1,3 +1,4 @@
+
 function chooseColor(){
     var mycolor = document.getElementById("myColor").value;
     document.execCommand('foreColor', false, mycolor);

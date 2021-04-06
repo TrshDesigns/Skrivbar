@@ -2,6 +2,10 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  user-select:none;
+}
+*::selection{
+  background-color:transparent;
 }
 body {
   background-image: url("");
@@ -52,13 +56,13 @@ body {
   outline: none;
 }
 #output {
-  height: 400px;
+  height: 600px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  width: 37%;
+  width: 70%;
   font-family: monospace;
   font-size: 22px;
   box-shadow: none;
-  max-height: 97vh;
+  max-height: 90vh;
   max-width: 90%;
   padding: -10px;
   border: none;
@@ -77,6 +81,11 @@ body {
 #output:focus {
   border: none;
   outline: none;
+}#output::selection {
+  background:royalblue;
+  color:white;
+  border-radius:10px;
+
 }
 #main {
   display: flex;
@@ -103,7 +112,7 @@ body {
 #list {
   resize: both;
   overflow: auto;
-  width: 23%;
+  width: 33%;
   background-color: #201d1d;
   margin: 0.5px;
   border-radius: 5px;
@@ -149,11 +158,11 @@ body {
   height:max-content;
 }
 #organizer::selection {
-  user-select: none;
+  user-select:none;
 }
 details,
 summary::marker {
-  color: rgba(3, 21, 34, 0.736);
+  color: rgba(255, 255, 255, 0.736);
   z-index:1;
 }
 #list-title {
@@ -173,6 +182,12 @@ summary::marker {
 #background-changer{
   border:none;
   outline:none;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur;
+  -webkit-backdrop-filter: blur(4px);
+  border-radius:10px;
+  margin-bottom:10px;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -206,7 +221,6 @@ summary::marker {
   margin-left: 10px;
   width: 97%;
   height:40px;
-  text-align: left;
   background: rgba(255, 255, 255, 0);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   color:rgb(0, 0, 0);
@@ -249,9 +263,9 @@ summary::marker {
   outline:none;
   background-color:gainsboro;
   border-radius:10px;
-  padding:10px;
-  width:50%;
+  width:auto;
   margin:10px;
+  margin-top:30px;
 }
 svg{
   transition:0.3s ease-in-out;
@@ -373,3 +387,18 @@ transform: translateY(-7px);
 .list-title{
   background-color:rgb(205, 122, 122);
 }
+.wrapper .item .text{
+  font-size: 18px;
+  font-weight: 400;
+}
+.item i{
+  font-size: 18px;
+  cursor: pointer;
+}
+.list-item{
+  border-radius:10px;
+  list-style:none;
+    background: rgba(255, 255, 255, 0);
+  padding:10px;
+}
+

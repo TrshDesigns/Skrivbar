@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Skrivbar</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/javascript/javascript.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/base16-dark.css">
     <script src="text-editor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
 </head>
+
 <body>
     <script src="https://kit.fontawesome.com/1fe7acc072.js" crossorigin="anonymous"></script>
     <div id="main">
@@ -41,239 +44,236 @@
         </div>
         <div class="toolbar">
             <ul class="tool-list">
-                    <li class="tool">
-                        <button class="tool--btn">
-                            <select id="input-font" class="input no-outline" onchange="changeFont (this);">
-                                <option value="Arial">Arial</option>
-                                <option value="Helvetica">Helvetica</option>
-                                <option value="Times New Roman">Times New Roman</option>
-                                <option value="Sans serif">Sans serif</option>
-                                <option value="Courier New">Courier New</option>
-                                <option value="Verdana">Verdana</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Palatino">Palatino</option>
-                                <option value="Garamond">Garamond</option>
-                                <option value="Comic Sans MS">Comic Sans MS</option>
-                                <option value="Arial Black">Arial Black</option>
-                                <option value="Tahoma">Tahoma</option>
-                                <option value="Comic Sans MS">Comic Sans MS</option>
-                            </select>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn fontStyle strikethrough"
-                            onclick="document.execCommand( 'strikethrough',false,null);">
-                            <strikethrough>
-                                <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M17 45C15.8954 45 15 45.8954 15 47C15 48.1046 15.8954 49 17 49V45ZM33 49C34.1046 49 35 48.1046 35 47C35 45.8954 34.1046 45 33 45V49ZM24.5848 20.3113L26.5047 20.8717L26.5047 20.8717L24.5848 20.3113ZM11.0801 59.4396C10.7706 60.4999 11.3793 61.6104 12.4396 61.9199C13.4999 62.2294 14.6104 61.6207 14.9199 60.5604L11.0801 59.4396ZM25.4152 20.3113L23.4953 20.8717L23.4953 20.8717L25.4152 20.3113ZM35.0801 60.5604C35.3896 61.6207 36.5001 62.2294 37.5604 61.9199C38.6207 61.6104 39.2294 60.4999 38.9199 59.4396L35.0801 60.5604ZM17 49H33V45H17V49ZM22.6649 19.7509L11.0801 59.4396L14.9199 60.5604L26.5047 20.8717L22.6649 19.7509ZM23.4953 20.8717L35.0801 60.5604L38.9199 59.4396L27.3351 19.7509L23.4953 20.8717ZM25 22C24.3035 22 23.6905 21.5404 23.4953 20.8717L27.3351 19.7509C27.0322 18.7133 26.0809 18 25 18V22ZM26.5047 20.8717C26.3095 21.5404 25.6965 22 25 22V18C23.9191 18 22.9678 18.7133 22.6649 19.7509L26.5047 20.8717Z"
-                                        fill="#219653" />
-                                    <path
-                                        d="M67 44H69C69 42.8954 68.1046 42 67 42V44ZM65 60C65 61.1046 65.8954 62 67 62C68.1046 62 69 61.1046 69 60H65ZM69 49C69 47.8954 68.1046 47 67 47C65.8954 47 65 47.8954 65 49H69ZM65 44C65 45.1046 65.8954 46 67 46C68.1046 46 69 45.1046 69 44H65ZM51 30C49.8954 30 49 30.8954 49 32C49 33.1046 49.8954 34 51 34V30ZM45 52C45 48.6863 47.6863 46 51 46V42C45.4772 42 41 46.4772 41 52H45ZM51 58C47.6863 58 45 55.3137 45 52H41C41 57.5228 45.4772 62 51 62V58ZM56 58H51V62H56L56 58ZM65 49C65 53.9706 60.9706 58 56 58L56 62C63.1797 62 69 56.1797 69 49H65ZM65 44V49H69V44H65ZM51 46H67V42H51V46ZM69 60V49H65V60H69ZM69 44V43H65V44H69ZM56 30L51.1336 30V34H56V30ZM51.1336 30H51V34H51.1336V30ZM69 43C69 35.8203 63.1797 30 56 30V34C60.9706 34 65 38.0294 65 43H69Z"
-                                        fill="#F2994A" />
-                                    <path d="M18 40L38 40L42 40L62 40" stroke="#2F80ED" stroke-width="6"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </strikethrough>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn redo-apply" onclick="document.execCommand( 'redo',false,null);">
-                            <redo>
-                                <svg id="undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
-                                        fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </redo>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn fontStyle undo-apply"
-                            onclick="document.execCommand( 'undo',false,null);">
-                            <undo>
-                                <svg id="rotated-undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
-                                        fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </undo>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn fontStyle orderedlist"
-                            onclick="document.execCommand('insertOrderedList', false, null);">
-                            <insertOrderedList><svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="19" y="12" width="35" height="35" rx="4" fill="#F2F2F2" stroke="#F2F2F2"
-                                        stroke-width="4" />
-                                    <path d="M29 24L53 24" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M29 32H45" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M29 40L53 40" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M29 48H45" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M29 56L53 56" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 28L17 28" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 20L17 20" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 36L17 36" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 52L17 52" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 60L17 60" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M21 44L17 44" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg></insertOrderedList>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn fontStyle unorderedlist"
-                            onclick="document.execCommand('insertUnorderedList',false, null)">
-                            <insertUnorderedList>
-                                <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M36 52.5C33.7909 52.5 32 54.2909 32 56.5V66C32 68.2091 33.7909 70 36 70H66C68.2091 70 70 68.2091 70 66V56.5C70 54.2909 68.2091 52.5 66 52.5L36 52.5Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M66 47.5C68.2091 47.5 70 45.7091 70 43.5V36C70 33.7909 68.2091 32 66 32L36 32C33.7909 32 32 33.7909 32 36V43.5C32 45.7091 33.7909 47.5 36 47.5L66 47.5Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M70 14V24C70 26.2091 68.2091 28 66 28L36 28C33.7909 28 32 26.2091 32 24V14C32 11.7909 33.7909 10 36 10H66C68.2091 10 70 11.7909 70 14Z"
-                                        fill="#56CCF2" />
-                                    <path
-                                        d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
-                                        fill="#2F80ED" />
-                                    <path
-                                        d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
-                                        fill="#2F80ED" />
-                                    <path
-                                        d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
-                                        fill="#2F80ED" />
-                                </svg>
-                            </insertUnorderedList>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button class="tool--btn">
-                            <input class="no-outline color-apply" type="color" onchange="chooseColor()" id="myColor">
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button type="button" class="tool--btn align-center">
-                            <select id="fontSize" onclick="changeSize()">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button type="button" class="tool--btn align-left"
-                            onclick="document.execCommand( 'justifyLeft',false,null);">
-                            <justifyLeft>
-                                <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </justifyLeft>
-                        </button>
-                    <li class="tool">
-                        <button class="tool--btn fontStyle align-right"
-                            onclick="document.execCommand( 'justifyRight',false,null);">
-                            <justifyRight>
-                                <svg id="rotated-align" width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </justifyRight>
-                        </button>
-                    </li>
-                    </li>
-                    <li class="tool">
-                        <button type="button" class="tool--btn align-center"
-                            onclick="document.execCommand( 'justifyCenter',false,null);">
-                            <justifyCenter>
-                                <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M26 51.9648L54 51.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M26 27.9648L54 27.9648" stroke="#56CCF2" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </justifyCenter>
-                        </button>
-                    </li>
-                    <li class="tool">
-                        <button type="button" class="tool--btn" onclick="document.execCommand( 'bold',false,null);"
-                            title="Bold Highlighted Text">
+                <li class="tool">
+                    <button class="tool--btn">
+                        <select id="input-font" class="input no-outline" onchange="changeFont (this);">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Sans serif">Sans serif</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                        </select>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle strikethrough"
+                        onclick="document.execCommand( 'strikethrough',false,null);">
+                        <strikethrough>
                             <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
-                                    d="M24 41H41V35H24V41ZM41 41H43V35H41V41ZM41 13H24.5V19H41V13ZM43 61H24.5V67H43V61ZM21 16.5V38H27V16.5H21ZM21 38V63.5H27V38H21ZM41 41C48.732 41 55 34.732 55 27H49C49 31.4183 45.4183 35 41 35V41ZM41 19C45.4183 19 49 22.5817 49 27H55C55 19.268 48.732 13 41 13V19ZM43 41C48.5228 41 53 45.4772 53 51H59C59 42.1634 51.8366 35 43 35V41ZM24.5 61C25.8807 61 27 62.1193 27 63.5H21C21 65.433 22.567 67 24.5 67V61ZM53 51C53 56.5229 48.5228 61 43 61V67C51.8366 67 59 59.8366 59 51H53ZM24.5 13C22.567 13 21 14.567 21 16.5H27C27 17.8807 25.8807 19 24.5 19V13Z"
-                                    fill="#C2CCDE" />
-                            </svg></button>
-                    </li>
-                    <li class="tool">
-                            <button class=" tool--btn italic" onclick="document.execCommand('italic',false,null);"
-                            title="Italicize Highlighted Text">
+                                    d="M17 45C15.8954 45 15 45.8954 15 47C15 48.1046 15.8954 49 17 49V45ZM33 49C34.1046 49 35 48.1046 35 47C35 45.8954 34.1046 45 33 45V49ZM24.5848 20.3113L26.5047 20.8717L26.5047 20.8717L24.5848 20.3113ZM11.0801 59.4396C10.7706 60.4999 11.3793 61.6104 12.4396 61.9199C13.4999 62.2294 14.6104 61.6207 14.9199 60.5604L11.0801 59.4396ZM25.4152 20.3113L23.4953 20.8717L23.4953 20.8717L25.4152 20.3113ZM35.0801 60.5604C35.3896 61.6207 36.5001 62.2294 37.5604 61.9199C38.6207 61.6104 39.2294 60.4999 38.9199 59.4396L35.0801 60.5604ZM17 49H33V45H17V49ZM22.6649 19.7509L11.0801 59.4396L14.9199 60.5604L26.5047 20.8717L22.6649 19.7509ZM23.4953 20.8717L35.0801 60.5604L38.9199 59.4396L27.3351 19.7509L23.4953 20.8717ZM25 22C24.3035 22 23.6905 21.5404 23.4953 20.8717L27.3351 19.7509C27.0322 18.7133 26.0809 18 25 18V22ZM26.5047 20.8717C26.3095 21.5404 25.6965 22 25 22V18C23.9191 18 22.9678 18.7133 22.6649 19.7509L26.5047 20.8717Z"
+                                    fill="#219653" />
+                                <path
+                                    d="M67 44H69C69 42.8954 68.1046 42 67 42V44ZM65 60C65 61.1046 65.8954 62 67 62C68.1046 62 69 61.1046 69 60H65ZM69 49C69 47.8954 68.1046 47 67 47C65.8954 47 65 47.8954 65 49H69ZM65 44C65 45.1046 65.8954 46 67 46C68.1046 46 69 45.1046 69 44H65ZM51 30C49.8954 30 49 30.8954 49 32C49 33.1046 49.8954 34 51 34V30ZM45 52C45 48.6863 47.6863 46 51 46V42C45.4772 42 41 46.4772 41 52H45ZM51 58C47.6863 58 45 55.3137 45 52H41C41 57.5228 45.4772 62 51 62V58ZM56 58H51V62H56L56 58ZM65 49C65 53.9706 60.9706 58 56 58L56 62C63.1797 62 69 56.1797 69 49H65ZM65 44V49H69V44H65ZM51 46H67V42H51V46ZM69 60V49H65V60H69ZM69 44V43H65V44H69ZM56 30L51.1336 30V34H56V30ZM51.1336 30H51V34H51.1336V30ZM69 43C69 35.8203 63.1797 30 56 30V34C60.9706 34 65 38.0294 65 43H69Z"
+                                    fill="#F2994A" />
+                                <path d="M18 40L38 40L42 40L62 40" stroke="#2F80ED" stroke-width="6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </strikethrough>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn redo-apply" onclick="document.execCommand( 'redo',false,null);">
+                        <redo>
+                            <svg id="undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
+                                    fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </redo>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle undo-apply" onclick="document.execCommand( 'undo',false,null);">
+                        <undo>
+                            <svg id="rotated-undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
+                                    fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </undo>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle orderedlist"
+                        onclick="document.execCommand('insertOrderedList', false, null);">
+                        <insertOrderedList><svg width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="19" y="12" width="35" height="35" rx="4" fill="#F2F2F2" stroke="#F2F2F2"
+                                    stroke-width="4" />
+                                <path d="M29 24L53 24" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M29 32H45" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M29 40L53 40" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M29 48H45" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M29 56L53 56" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 28L17 28" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 20L17 20" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 36L17 36" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 52L17 52" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 60L17 60" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 44L17 44" stroke="#F2994A" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></insertOrderedList>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle unorderedlist"
+                        onclick="document.execCommand('insertUnorderedList',false, null)">
+                        <insertUnorderedList>
                             <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M36 52.5C33.7909 52.5 32 54.2909 32 56.5V66C32 68.2091 33.7909 70 36 70H66C68.2091 70 70 68.2091 70 66V56.5C70 54.2909 68.2091 52.5 66 52.5L36 52.5Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M66 47.5C68.2091 47.5 70 45.7091 70 43.5V36C70 33.7909 68.2091 32 66 32L36 32C33.7909 32 32 33.7909 32 36V43.5C32 45.7091 33.7909 47.5 36 47.5L66 47.5Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M70 14V24C70 26.2091 68.2091 28 66 28L36 28C33.7909 28 32 26.2091 32 24V14C32 11.7909 33.7909 10 36 10H66C68.2091 10 70 11.7909 70 14Z"
+                                    fill="#56CCF2" />
+                                <path
+                                    d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
+                                    fill="#2F80ED" />
+                                <path
+                                    d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
+                                    fill="#2F80ED" />
+                                <path
+                                    d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
+                                    fill="#2F80ED" />
+                            </svg>
+                        </insertUnorderedList>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn">
+                        <input class="no-outline color-apply" type="color" onchange="chooseColor()" id="myColor">
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-center">
+                        <select id="fontSize" onclick="changeSize()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-left"
+                        onclick="document.execCommand( 'justifyLeft',false,null);">
+                        <justifyLeft>
+                            <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </justifyLeft>
+                    </button>
+                <li class="tool">
+                    <button class="tool--btn fontStyle align-right"
+                        onclick="document.execCommand( 'justifyRight',false,null);">
+                        <justifyRight>
+                            <svg id="rotated-align" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </justifyRight>
+                    </button>
+                </li>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-center"
+                        onclick="document.execCommand( 'justifyCenter',false,null);">
+                        <justifyCenter>
+                            <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M26 51.9648L54 51.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M26 27.9648L54 27.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </justifyCenter>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn" onclick="document.execCommand( 'bold',false,null);"
+                        title="Bold Highlighted Text">
+                        <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 41H41V35H24V41ZM41 41H43V35H41V41ZM41 13H24.5V19H41V13ZM43 61H24.5V67H43V61ZM21 16.5V38H27V16.5H21ZM21 38V63.5H27V38H21ZM41 41C48.732 41 55 34.732 55 27H49C49 31.4183 45.4183 35 41 35V41ZM41 19C45.4183 19 49 22.5817 49 27H55C55 19.268 48.732 13 41 13V19ZM43 41C48.5228 41 53 45.4772 53 51H59C59 42.1634 51.8366 35 43 35V41ZM24.5 61C25.8807 61 27 62.1193 27 63.5H21C21 65.433 22.567 67 24.5 67V61ZM53 51C53 56.5229 48.5228 61 43 61V67C51.8366 67 59 59.8366 59 51H53ZM24.5 13C22.567 13 21 14.567 21 16.5H27C27 17.8807 25.8807 19 24.5 19V13Z"
+                                fill="#C2CCDE" />
+                        </svg></button>
+                </li>
+                <li class="tool">
+                    <button class=" tool--btn italic" onclick="document.execCommand('italic',false,null);"
+                        title="Italicize Highlighted Text">
+                        <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M35 16H55" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
                                 stroke-linejoin="round" />
                             <path d="M25 64H45" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
@@ -281,54 +281,61 @@
                             <path d="M45 16L35 64" stroke="#C2CCDE" stroke-width="6" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg></button>
-                    </li>
-                    <li class="tool">
-                        <button type="button" data-command="underline" aasdsasdssadasssssdsd class="tool--btn">
-                            <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M52.1128 24.6127L52.1128 60.1127C52.1128 66.7401 46.7402 72.1127 40.1128 72.1127V72.1127C33.4854 72.1127 28.1128 66.7401 28.1128 60.1127L28.1128 17.1127C28.1128 12.1421 32.1422 8.1127 37.1128 8.1127V8.1127C42.0834 8.1127 46.1128 12.1421 46.1128 17.1127V53.1127C46.1128 56.4264 43.4265 59.1127 40.1128 59.1127V59.1127C36.7991 59.1127 34.1128 56.4264 34.1128 53.1127L34.1128 24.6127"
-                                    stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li>
-                        <button class="tool--btn fontStyle underline"
+                </li>
+                <li class="tool">
+                    <button type="button" data-command="underline" aasdsasdssadasssssdsd class="tool--btn">
+                        <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M52.1128 24.6127L52.1128 60.1127C52.1128 66.7401 46.7402 72.1127 40.1128 72.1127V72.1127C33.4854 72.1127 28.1128 66.7401 28.1128 60.1127L28.1128 17.1127C28.1128 12.1421 32.1422 8.1127 37.1128 8.1127V8.1127C42.0834 8.1127 46.1128 12.1421 46.1128 17.1127V53.1127C46.1128 56.4264 43.4265 59.1127 40.1128 59.1127V59.1127C36.7991 59.1127 34.1128 56.4264 34.1128 53.1127L34.1128 24.6127"
+                                stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="tool--btn fontStyle underline"
                         onclick="document.execCommand( 'underline',false,null);">
                         <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27 16C27 14.3431 25.6569 13 24 13C22.3431 13 21 14.3431 21 16H27ZM59 16C59 14.3431 57.6569 13 56 13C54.3431 13 53 14.3431 53 16H59ZM21 16V49H27V16H21ZM39 67H41V61H39V67ZM59 49V16H53V49H59ZM41 67C50.9411 67 59 58.9411 59 49H53C53 55.6274 47.6274 61 41 61V67ZM21 49C21 58.9411 29.0589 67 39 67V61C32.3726 61 27 55.6274 27 49H21Z" fill="#C2CCDE" />
-                          </svg></button>
-                    </li>
-                    <li class="tool">
-                        <button type="button" data-command='justifyLeft' class="tool--btn">
-                            <svg width="35" height="35" viewBox="0 0 80 80" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.8188 21.544C16.7533 22.492 15.3188 24.5785 15.3188 27V59C15.3188 62.3137 18.0051 65 21.3188 65H53.3188C55.7403 65 57.8268 63.5655 58.7748 61.5H27.3188C22.6244 61.5 18.8188 57.6944 18.8188 53V21.544Z"
-                                    fill="#C2CCDE" />
-                                <path
-                                    d="M49.9708 24.6651C50.805 24.1834 51.8327 24.1834 52.6669 24.6651C53.5011 25.1467 54.015 26.0368 54.015 27C54.015 27.9632 53.5011 28.8533 52.6669 29.3349C51.8327 29.8166 50.805 29.8166 49.9708 29.3349C49.1366 28.8533 48.6227 27.9632 48.6227 27C48.6227 26.0368 49.1366 25.1467 49.9708 24.6651Z"
-                                    fill="#C2CCDE" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M21.3188 21C21.3188 17.6863 24.0051 15 27.3188 15H59.3188C62.6326 15 65.3188 17.6863 65.3188 21V50.4644L60.7938 45.9393C59.4269 44.5725 57.2108 44.5725 55.844 45.9393L53.18 48.6033L39.8989 34.1149C38.5117 32.6016 36.126 32.6016 34.7388 34.1149L21.3188 48.7548V21ZM55.1669 20.3349C52.7857 18.9602 49.852 18.9602 47.4708 20.3349C45.0896 21.7097 43.6227 24.2504 43.6227 27C43.6227 29.7496 45.0896 32.2903 47.4708 33.6651C49.852 35.0398 52.7857 35.0398 55.1669 33.6651C57.5481 32.2903 59.015 29.7496 59.015 27C59.015 24.2504 57.5481 21.7097 55.1669 20.3349Z"
-                                    fill="#C2CCDE" />
-                                <path
-                                    d="M37.3189 38.6997L23.8417 53.4021C24.0411 55.1457 25.5218 56.5 27.3188 56.5H59.3188C60.6602 56.5 61.8291 55.7439 62.4162 54.6329L58.3189 50.5355L55.6078 53.2466C54.1987 54.6557 51.8993 54.6057 50.5529 53.1368L37.3189 38.6997Z"
-                                    fill="#C2CCDE" />
-                            </svg>
-                        </button>
-                    </li>
+                            <path
+                                d="M27 16C27 14.3431 25.6569 13 24 13C22.3431 13 21 14.3431 21 16H27ZM59 16C59 14.3431 57.6569 13 56 13C54.3431 13 53 14.3431 53 16H59ZM21 16V49H27V16H21ZM39 67H41V61H39V67ZM59 49V16H53V49H59ZM41 67C50.9411 67 59 58.9411 59 49H53C53 55.6274 47.6274 61 41 61V67ZM21 49C21 58.9411 29.0589 67 39 67V61C32.3726 61 27 55.6274 27 49H21Z"
+                                fill="#C2CCDE" />
+                        </svg></button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command='justifyLeft' class="tool--btn">
+                        <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.8188 21.544C16.7533 22.492 15.3188 24.5785 15.3188 27V59C15.3188 62.3137 18.0051 65 21.3188 65H53.3188C55.7403 65 57.8268 63.5655 58.7748 61.5H27.3188C22.6244 61.5 18.8188 57.6944 18.8188 53V21.544Z"
+                                fill="#C2CCDE" />
+                            <path
+                                d="M49.9708 24.6651C50.805 24.1834 51.8327 24.1834 52.6669 24.6651C53.5011 25.1467 54.015 26.0368 54.015 27C54.015 27.9632 53.5011 28.8533 52.6669 29.3349C51.8327 29.8166 50.805 29.8166 49.9708 29.3349C49.1366 28.8533 48.6227 27.9632 48.6227 27C48.6227 26.0368 49.1366 25.1467 49.9708 24.6651Z"
+                                fill="#C2CCDE" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M21.3188 21C21.3188 17.6863 24.0051 15 27.3188 15H59.3188C62.6326 15 65.3188 17.6863 65.3188 21V50.4644L60.7938 45.9393C59.4269 44.5725 57.2108 44.5725 55.844 45.9393L53.18 48.6033L39.8989 34.1149C38.5117 32.6016 36.126 32.6016 34.7388 34.1149L21.3188 48.7548V21ZM55.1669 20.3349C52.7857 18.9602 49.852 18.9602 47.4708 20.3349C45.0896 21.7097 43.6227 24.2504 43.6227 27C43.6227 29.7496 45.0896 32.2903 47.4708 33.6651C49.852 35.0398 52.7857 35.0398 55.1669 33.6651C57.5481 32.2903 59.015 29.7496 59.015 27C59.015 24.2504 57.5481 21.7097 55.1669 20.3349Z"
+                                fill="#C2CCDE" />
+                            <path
+                                d="M37.3189 38.6997L23.8417 53.4021C24.0411 55.1457 25.5218 56.5 27.3188 56.5H59.3188C60.6602 56.5 61.8291 55.7439 62.4162 54.6329L58.3189 50.5355L55.6078 53.2466C54.1987 54.6557 51.8993 54.6057 50.5529 53.1368L37.3189 38.6997Z"
+                                fill="#C2CCDE" />
+                        </svg>
+                    </button>
+                </li>
             </ul>
         </div>
         <div id="output" contenteditable="true">
         </div>
         <div id="organizer">
             <button class="no-outline" id="background-changer">
-                <svg onclick="changebackground();" width="20" height="20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 20.7305C12 18.5213 13.7909 16.7305 16 16.7305H64C66.2091 16.7305 68 18.5213 68 20.7305V52.7305H47.874C46.0504 52.7305 44.4579 53.9638 44.0014 55.7289L44 55.7305H36L35.9986 55.729C35.5421 53.9638 33.9496 52.7305 32.126 52.7305H12V20.7305Z" fill="#C2CCDE" />
-                    <path d="M32.126 56.7305H4.15215C4.06812 56.7305 4 56.7986 4 56.8826C4 61.2169 7.51361 64.7305 11.8479 64.7305H68.1521C72.4864 64.7305 76 61.2169 76 56.8826C76 56.7986 75.9319 56.7305 75.8479 56.7305H47.874C47.4299 58.4557 45.8638 59.7305 44 59.7305H36C34.1362 59.7305 32.5701 58.4557 32.126 56.7305Z" fill="#C2CCDE" />
-                  </svg>
-                 <input type="text" value="https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1504&q=80" id="bgchanger" placeholder=""/>
+                <svg onclick="changebackground();" width="20" height="20" viewBox="0 0 80 80" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 20.7305C12 18.5213 13.7909 16.7305 16 16.7305H64C66.2091 16.7305 68 18.5213 68 20.7305V52.7305H47.874C46.0504 52.7305 44.4579 53.9638 44.0014 55.7289L44 55.7305H36L35.9986 55.729C35.5421 53.9638 33.9496 52.7305 32.126 52.7305H12V20.7305Z"
+                        fill="#C2CCDE" />
+                    <path
+                        d="M32.126 56.7305H4.15215C4.06812 56.7305 4 56.7986 4 56.8826C4 61.2169 7.51361 64.7305 11.8479 64.7305H68.1521C72.4864 64.7305 76 61.2169 76 56.8826C76 56.7986 75.9319 56.7305 75.8479 56.7305H47.874C47.4299 58.4557 45.8638 59.7305 44 59.7305H36C34.1362 59.7305 32.5701 58.4557 32.126 56.7305Z"
+                        fill="#C2CCDE" />
+                </svg>
+                <input type="text"
+                    value="https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1504&q=80"
+                    id="bgchanger" placeholder="" />
             </button>
             <div>
                 <details>
@@ -336,18 +343,12 @@
                         <h1 id="organizer-title-to-do">To Do <i id="to-do-circle" class="fas fa-circle"></i> </h1>
                     </summary>
                     <ol id="to-do-list">
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
+                        <div class="wrapper">
+                            <div draggable="true" class="list-item item">
+                                <span class="list-item text">Design Nav</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
                     </ol>
                 </details>
             </div>
@@ -358,18 +359,12 @@
                                 class="fas fa-circle"></i> </h1>
                     </summary>
                     <ol id="in-process-list">
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
+                        <div class="wrapper">
+                            <div draggable="true" class="list-item item">
+                                <span class="list-item text">Write a book</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
                     </ol>
                 </details>
             </div>
@@ -380,23 +375,32 @@
                         </h1>
                     </summary>
                     <ol id="finished-list">
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
-                        <li class="list-item">
-                            <p>Create a New Banner</p>
-                        </li>
+                        <div class="wrapper">
+                            <div draggable="true" class="list-item item">
+                                <span class="list-item text">Create new icons</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div draggable="true" class="list-item item">
+                                <span class="list-item text">Check Figma icons</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div draggable="true" class="list-item item">
+                                <span class="list-item text">Reverse Engineer SVG files</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
                     </ol>
                 </details>
             </div>
         </div>
     </div>
     <script src="./renderer.js"></script>
+    <script>
+        const dragArea = document.querySelector(".wrapper");
+        new Sortable(dragArea, {
+            animation: 350
+        });
+    </script>
 </body>
+
 </html>
