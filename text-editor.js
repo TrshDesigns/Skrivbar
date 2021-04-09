@@ -28,3 +28,19 @@ function chooseColor(){
     var url = document.getElementById('bgchanger').value;
     document.getElementsByTagName('body')[0].style.backgroundImage = "url('" + url + "')";
 }
+function hideorganizer() {
+  const organizer = document.getElementById("organizer");
+  const hideorganizer = document.getElementById("organizer-hider");
+  const organizerwidht = document.getElementById("organizer").width;
+  if (organizer.style.display === "block") {
+    organizer.style.display = "none";
+    organizer.style.width = "0px"
+    hideorganizer.style.width = "50px"
+    hideorganizer.style.height = "50px";
+  } else {
+    organizer.style.display = "block";
+    organizer.style.width = "40%"
+    hideorganizer.style.width = "400px";
+    hideorganizer.style.height = "30px";
+  }
+}

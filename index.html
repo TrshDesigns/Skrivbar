@@ -14,10 +14,30 @@
     <script src="text-editor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
 </head>
-
 <body>
     <script src="https://kit.fontawesome.com/1fe7acc072.js" crossorigin="anonymous"></script>
-    <div id="main">
+    <header id="header-bar">
+           <ul id="header-options">
+               <li>
+                <button class="no-outline" id="background-changer">
+                        Background
+                    <svg onclick="changebackground();" width="20" height="20" viewBox="0 0 80 80" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 20.7305C12 18.5213 13.7909 16.7305 16 16.7305H64C66.2091 16.7305 68 18.5213 68 20.7305V52.7305H47.874C46.0504 52.7305 44.4579 53.9638 44.0014 55.7289L44 55.7305H36L35.9986 55.729C35.5421 53.9638 33.9496 52.7305 32.126 52.7305H12V20.7305Z"
+                            fill="#C2CCDE" />
+                        <path
+                            d="M32.126 56.7305H4.15215C4.06812 56.7305 4 56.7986 4 56.8826C4 61.2169 7.51361 64.7305 11.8479 64.7305H68.1521C72.4864 64.7305 76 61.2169 76 56.8826C76 56.7986 75.9319 56.7305 75.8479 56.7305H47.874C47.4299 58.4557 45.8638 59.7305 44 59.7305H36C34.1362 59.7305 32.5701 58.4557 32.126 56.7305Z"
+                            fill="#C2CCDE" />
+                    </svg>
+                    <input type="text"
+                        value="https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1504&q=80"
+                        id="bgchanger" placeholder="" />
+                </button>
+               </li>
+           </ul> 
+    </header>
+    <main id="main">
         <div id="list">
             <h1 id="list-title">List</h1>
             <svg id="notes-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"
@@ -47,11 +67,12 @@
                 <li class="tool">
                     <button class="tool--btn">
                         <select id="input-font" class="input no-outline" onchange="changeFont (this);">
+                            <option selected disabled>Choose a Font</option>
                             <option value="Arial">Arial</option>
                             <option value="Helvetica">Helvetica</option>
                             <option value="Times New Roman">Times New Roman</option>
                             <option value="Sans serif">Sans serif</option>
-                            <option value="Courier New">Courier New</option>
+                            <option value="Courier New">Courier   margin:5px;  margin:5px;  margin:5px;New</option>
                             <option value="Verdana">Verdana</option>
                             <option value="Georgia">Georgia</option>
                             <option value="Palatino">Palatino</option>
@@ -285,7 +306,7 @@
                 <li class="tool">
                     <button type="button" data-command="underline" aasdsasdssadasssssdsd class="tool--btn">
                         <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
+                            <path  margin:5px;  margin:5px;
                                 d="M52.1128 24.6127L52.1128 60.1127C52.1128 66.7401 46.7402 72.1127 40.1128 72.1127V72.1127C33.4854 72.1127 28.1128 66.7401 28.1128 60.1127L28.1128 17.1127C28.1128 12.1421 32.1422 8.1127 37.1128 8.1127V8.1127C42.0834 8.1127 46.1128 12.1421 46.1128 17.1127V53.1127C46.1128 56.4264 43.4265 59.1127 40.1128 59.1127V59.1127C36.7991 59.1127 34.1128 56.4264 34.1128 53.1127L34.1128 24.6127"
                                 stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -322,30 +343,22 @@
         </div>
         <div id="output" contenteditable="true">
         </div>
+        <div>
+             <button id="organizer-hider" onclick="hideorganizer()"><i class="fas fa-list-alt"></i></button>
         <div id="organizer">
-            <button class="no-outline" id="background-changer">
-                <svg onclick="changebackground();" width="20" height="20" viewBox="0 0 80 80" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 20.7305C12 18.5213 13.7909 16.7305 16 16.7305H64C66.2091 16.7305 68 18.5213 68 20.7305V52.7305H47.874C46.0504 52.7305 44.4579 53.9638 44.0014 55.7289L44 55.7305H36L35.9986 55.729C35.5421 53.9638 33.9496 52.7305 32.126 52.7305H12V20.7305Z"
-                        fill="#C2CCDE" />
-                    <path
-                        d="M32.126 56.7305H4.15215C4.06812 56.7305 4 56.7986 4 56.8826C4 61.2169 7.51361 64.7305 11.8479 64.7305H68.1521C72.4864 64.7305 76 61.2169 76 56.8826C76 56.7986 75.9319 56.7305 75.8479 56.7305H47.874C47.4299 58.4557 45.8638 59.7305 44 59.7305H36C34.1362 59.7305 32.5701 58.4557 32.126 56.7305Z"
-                        fill="#C2CCDE" />
-                </svg>
-                <input type="text"
-                    value="https://images.unsplash.com/photo-1505996000701-debaf9186e2d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1504&q=80"
-                    id="bgchanger" placeholder="" />
-            </button>
             <div>
                 <details>
                     <summary class="no-outline">
                         <h1 id="organizer-title-to-do">To Do <i id="to-do-circle" class="fas fa-circle"></i> </h1>
                     </summary>
-                    <ol id="to-do-list">
-                        <div class="wrapper">
-                            <div draggable="true" class="list-item item">
-                                <span class="list-item text">Design Nav</span>
+                    <ol class="hover-bright" id="to-do-list">
+                        <div id="todo">
+                            <div class="list-item ">
+                                <span class="list-item text">Reverse Engineer SVG files</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div class="list-item item">
+                                <span class="list-item text">Reverse Engineer SVG files</span>
                                 <i class="fas fa-bars"></i>
                             </div>
                         </div>
@@ -358,10 +371,14 @@
                         <h1 id="organizer-title-in-process">In Process <i id="in-process-circle"
                                 class="fas fa-circle"></i> </h1>
                     </summary>
-                    <ol id="in-process-list">
-                        <div class="wrapper">
-                            <div draggable="true" class="list-item item">
-                                <span class="list-item text">Write a book</span>
+                    <ol class="hover-bright" id="in-process-list">
+                        <div id="inprocess">
+                            <div class="list-item item">
+                                <span class="list-item text">Reverse Engineer SVG files</span>
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div class="list-item item">
+                                <span class="list-item text">Reverse Engineer SVG files</span>
                                 <i class="fas fa-bars"></i>
                             </div>
                         </div>
@@ -374,16 +391,12 @@
                         <h1 id="organizer-title-finished">Finished <i id="finished-circle" class="fas fa-circle"></i>
                         </h1>
                     </summary>
-                    <ol id="finished-list">
-                        <div class="wrapper">
-                            <div draggable="true" class="list-item item">
-                                <span class="list-item text">Create new icons</span>
-                                <i class="fas fa-bars"></i>
-                            </div>
-                            <div draggable="true" class="list-item item">
-                                <span class="list-item text">Check Figma icons</span>
-                                <i class="fas fa-bars"></i>
-                            </div>
+                    <ol class="hover-bright" id="finished-list">
+                        <div id="finished">
+                                <div draggable="true" class="list-item item">
+                                    <span class="list-item text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
                             <div draggable="true" class="list-item item">
                                 <span class="list-item text">Reverse Engineer SVG files</span>
                                 <i class="fas fa-bars"></i>
@@ -392,15 +405,25 @@
                     </ol>
                 </details>
             </div>
-        </div>
-    </div>
-    <script src="./renderer.js"></script>
-    <script>
-        const dragArea = document.querySelector(".wrapper");
-        new Sortable(dragArea, {
-            animation: 350
-        });
-    </script>
+    </main>
+       
+            <script>
+                new Sortable(finished, {
+                    animation: 200,
+                    group: 'shared',
+                    ghostClass: 'background-go'
+                });
+                new Sortable(inprocess, {
+                    animation: 200,
+                    group: 'shared',
+                    ghostClass: 'background-slow'
+                });
+                new Sortable(todo, {
+                    animation: 200,
+                    group: 'shared',
+                    ghostClass: 'background-stop'
+                });
+            </script>
+            <script src="./renderer.js"></script>
 </body>
-
 </html>
