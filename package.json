@@ -1,22 +1,19 @@
 {
   "name": "Skrivbar",
   "version": "1.0.0",
-  "description": "A Text Editor App",
+  "description": "A Smooth Text Editor App",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": "https://github.com/TrshDesigns/Skrivbar.git",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Electron"
   ],
   "author": "TrshDesigns",
   "license": "no",
   "devDependencies": {
     "electron": "^12.0.2"
-  }
+  },
+  "dependencies": {}
 }
