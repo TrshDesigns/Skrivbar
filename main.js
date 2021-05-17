@@ -98,7 +98,7 @@ function renderItem() {
     panel.append(el);
   });
 }
-
+/*Functions to add or remove items on the organizer */
 function create() {
   let fn = document.querySelector("#fname").value;
   let ln = document.querySelector("#lname").value;
