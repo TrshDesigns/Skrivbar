@@ -1,3 +1,5 @@
+## Skrivbar
+
 This is an opensource text editor and organizer called Skrivbar wich means writable in Norwegian feel free to comunicate with TrshDesigns for ideas and more
 
 ## To Use
