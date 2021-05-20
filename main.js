@@ -60,6 +60,26 @@ function execCmd (command) {
 function execCommandWithArg (command, arg){
   richTextField.document.execCommand(command, false, arg);
 }
+/*on load show current folder*/
+function listcurrentfolder(){
+ let currentfolder = "Home";
+ let currentfolderdisplayer = document.getElementById("current-folder-displayer")
+ currentfolderdisplayer.innerText = currentfolder;
+}
+//Hide or show list organizer
+function hidelistorganizer() {
+  const listorganizer = document.getElementById("list");
+  const hidelistorganizer = document.getElementById("list-organizer-hider");
+  //on Show and Hide Styles
+  if (listorganizer.style.display === "block") {
+    listorganizer.style.width = "0px";
+    listorganizer.style.display = "none";
+    hidelistorganizer.style.margin = "2px 0px 0px 5px"
+   } else {
+    listorganizer.style.display = "block";
+        hidelistorganizer.style.margin = "2px 5px 0px 5px"
+   }
+  }
 //Hide or Show Organizer
 function hideorganizer() {
 const organizer = document.getElementById("organizer");

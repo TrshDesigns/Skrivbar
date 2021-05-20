@@ -2,6 +2,7 @@
   --go-color: #00ca4e;
   --slow-color: #ffbd44;
   --stop-color: #ff605c;
+  --color-theme: #34a0ff;
 }
 *,
 *:before,
@@ -48,14 +49,12 @@ body {
   min-height: 420px;
   max-height: 90vh;
   resize: both;
-  overflow: scroll;
   flex: content;
   list-style: none;
-  padding: 0;
   overflow: hidden;
   border-radius: 1px;
   background: rgb(255, 255, 255);
-  box-shadow: 0px 10px 10px 0 rgba(31, 38, 135, 0.189);
+  box-shadow: 0px 10px 10px 10px rgba(31, 38, 135, 0.022);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -102,11 +101,11 @@ option {
   margin-top: 3px;
   background: rgba(255, 255, 255, 0.829);
   color: rgb(3, 0, 23);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 1px 8px 32px 10px rgba(21, 26, 98, 0.253);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.552);
+  border: 1px solid rgba(43, 42, 42, 0.226);
   resize: both;
   overflow: none;
   z-index: 2;
@@ -128,19 +127,19 @@ option {
   transition: all ease-in-out 0.2s;
 }
 .file-element:hover {
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.1s;
   transform: translateY(-1.5px);
-  box-shadow: 0 5px 5px 0 rgba(31, 38, 135, 0.32);
+  box-shadow: 0 6px 6px 0 rgba(31, 38, 135, 0.32);
 }
 #document-center {
   position: center;
-  padding: 5px;
+  padding: 6px;
   height: 50px;
   width: 50px;
   margin: -4.3px 5px 0px 0px;
   border-radius: 10px;
-  background-color: rgb(52, 160, 255);
-  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.245);
+  background-color:var(--color-theme);
+  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.192);
   transition: all 0.7s;
   margin-left: 10px;
 }
@@ -155,15 +154,16 @@ option {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.552);
-  overflow-y: auto;
+  overflow:none;
   background-color: rgba(255, 255, 255, 0.07);
 }
 #file-displayer-hider {
+  display:block;
   position: center;
   padding: 5px;
-  margin: 3px 0px 0px 0px;
+  margin: 2px 0px 0px 0px;
   border-radius: 10px;
-  background-color: rgba(157, 157, 157, 0.122);
+  background-color: rgba(157, 157, 157, 0.054);
   transition: all 0.7s;
   height: max-content;
 }
@@ -177,6 +177,7 @@ option {
   width: 99%;
   height: 100%;
 }
+
 #header-bar {
   background: #212121;
   width: 100%;
@@ -199,11 +200,6 @@ option {
   border-radius: 25%;
   background-color: white;
 }
-#notes-icon {
-  position: relative;
-  left: 130px;
-  bottom: 70px;
-}
 #add {
   position: relative;
   left: 100px;
@@ -211,13 +207,14 @@ option {
   border-radius: 5px;
 }
 #list {
+  display: none;
   resize: both;
   overflow: auto;
   width: 250px;
   height: 300px;
   min-width: 250px;
   max-height: 90vh;
-  min-height: 300px;
+  min-height:500px;
   background-color: #201d1d;
   margin: 0.5px;
   border-radius: 5px;
@@ -233,26 +230,45 @@ option {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
-.titles {
+.list-titles {
   position: relative;
   top: 0px;
   margin-left: 10px;
   width: 100%;
-  border-radius: 10px;
   margin-left: 0px;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  color:black;
+  border-radius:10px;
+  background: rgba(211, 211, 211, 0.25);
+  box-shadow: 0 1px 1px 0 rgba(31, 38, 135, 0.259);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(68, 68, 68, 0.293);
+  margin:10px 0px 10px 0px;
+  list-style:none;
+  transition:all 0.1s ease-in-out;
+}
+.list-titles:hover{
+  transition:all 0.1s ease-in-out;
+ -webkit-filter:brightness(1.5);
+ filter:brightness(1.5);
+ cursor:pointer;
+}
+#list-organizer-hider{
+  background-color: var(--color-theme);
+  position: center;
+  padding:7.5px;
+  margin: 2px 0px 5px 5px;
   border-radius: 10px;
-  border: 1px solid rgb(255, 255, 255);
+  transition: all 0.7s;
+  height:50px;
+  width:50px;
 }
 #organizer-hider {
   position: center;
-  padding: 5px;
+  padding: 5.5px;
   margin: 5px 5px 0px 0px;
   border-radius: 10px;
-  background-color: rgb(52, 160, 255);
+  background-color: var(--color-theme);
   box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.245);
   transition: all 0.7s;
 }
@@ -272,14 +288,19 @@ option {
   min-height: auto;
   min-width: 400px;
   margin: 0.5px;
-  background: rgba(238, 238, 238, 0.811);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  padding-right:9px;
+  background: rgba(238, 238, 238, 0.911);
+  box-shadow: 0 8px 12px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   height: auto;
   max-height: 77vh;
+}
+#folder-displayer{
+  display:flex;
+  flex-direction:row;
 }
 #organizer::after {
   transition: ease-in-out 1s;
@@ -377,6 +398,15 @@ summary::marker {
   background-color: gainsboro;
   border-radius: 10px;
   width: 50px;
+  transition: all 1s ease-in-out;
+}
+#bgchanger:focus {
+  border: none;
+  outline: none;
+  background-color: gainsboro;
+  border-radius: 10px;
+  width:200px;
+  transition:all 1s ease-in-out;
 }
 .header-options-bt {
   background-color: rgba(128, 128, 128, 0.287);
@@ -421,7 +451,7 @@ summary::marker {
   height: 35px;
   background-color: white;
   outline: none;
-  border: 3.5px solid rgb(0, 132, 255);
+  border: 3.5px solid var(--color-theme);
   border-radius: 10px;
 }
 #rotated-align {
@@ -456,7 +486,7 @@ summary::marker {
   width: 97%;
   text-align: left;
   background: rgba(255, 255, 255, 0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.244);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -473,7 +503,7 @@ summary::marker {
   height: 35px;
   margin-top: -18px;
   background: rgba(255, 255, 255, 0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.224);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -492,7 +522,7 @@ summary::marker {
   height: 35px;
   text-align: left;
   background: rgba(255, 255, 255, 0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.224);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.185);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -500,6 +530,9 @@ summary::marker {
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 17px;
   z-index: 0;
+}
+#current-folder-displayer{
+  margin-left:2px;
 }
 #organizer-title-to-do:hover {
   cursor: pointer;
@@ -524,9 +557,6 @@ summary::marker {
 }
 #in-process-circle {
   color: var(--slow-color);
-}
-.list-title {
-  background-color: rgb(205, 122, 122);
 }
 .wrapper-finished .item .text {
   font-size: 18px;
