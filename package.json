@@ -1,7 +1,7 @@
 {
   "name": "Skrivbar",
   "version": "1.0.0",
-  "description": "A Smooth Text Editor App",
+  "description": "A Smooth Text Editor Web App",
   "main": "main.js",
   "scripts": {
     "start": "electron ."

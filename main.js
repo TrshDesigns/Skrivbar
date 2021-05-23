@@ -80,6 +80,26 @@ function hidelistorganizer() {
         hidelistorganizer.style.margin = "2px 5px 0px 5px"
    }
   }
+//tool tips
+function showbox(){}
+function hidebox(){}
+//hub
+function hub(){
+  const header  = document.getElementById("header-bar");
+  const main = document.getElementById("main");
+  if (header.style.height = "30px"){
+    header.style.height = "80vh";
+    main.style.display === "none";
+  } if (header.style.height > "30px"){
+    main.style.display === "flex";
+    header.style.height === "30px";
+  }
+}
+//hidefiledisplayer
+function hidefiledisplayer(){
+  const filedisplayer  = document.getElementById("file-displayer")
+    filedisplayer.style.display === "none";
+}
 //Hide or Show Organizer
 function hideorganizer() {
 const organizer = document.getElementById("organizer");
@@ -87,7 +107,7 @@ const hideorganizer = document.getElementById("organizer-hider");
 //on Show and Hide Styles
 if (organizer.style.display === "block") {
   organizer.style.display = "none";
-  organizer.style.width = "0px"
+  organizer.style.width = "0px";
   hideorganizer.style.width = "50px"
   hideorganizer.style.height = "50px";
  } else {
@@ -96,6 +116,10 @@ if (organizer.style.display === "block") {
   organizer.style.width = "40%"
   organizer.style.display = "block";
  }
+}
+//rezise organizer hider to match organizer on rezise event
+function organizerrezise(){
+  console.log("A")
 }
 let el, i;
 let data = [
