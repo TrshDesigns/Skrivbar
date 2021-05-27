@@ -89,10 +89,9 @@ function hub(){
   const main = document.getElementById("main");
   if (header.style.height = "30px"){
     header.style.height = "80vh";
-    main.style.display === "none";
-  } if (header.style.height > "30px"){
-    main.style.display === "flex";
-    header.style.height === "30px";
+    main.style.display = "none";
+  } if(header.style.height > "30px"){
+    header.style.height = "30px"
   }
 }
 //hidefiledisplayer
@@ -116,10 +115,6 @@ if (organizer.style.display === "block") {
   organizer.style.width = "40%"
   organizer.style.display = "block";
  }
-}
-//rezise organizer hider to match organizer on rezise event
-function organizerrezise(){
-  console.log("A")
 }
 let el, i;
 let data = [

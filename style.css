@@ -21,6 +21,9 @@ button {
   outline: none;
   background-color: white;
 }
+button:hover {
+  cursor: pointer;
+}
 html {
   margin: 0px;
   padding: 0px;
@@ -50,15 +53,14 @@ body {
   resize: both;
   list-style: none;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.11);
-  box-shadow: 0px 10px 10px 10px rgba(31, 38, 135, 0.022);
+  background: rgba(255, 255, 255, 0.206);
+  box-shadow: 0 10px 15px 0 rgba(31, 38, 135, 0.212);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   margin: 2px 0px 0px 5px;
   padding: 0px 0px 0px 8px;
-  border: 2px rgba(183, 183, 183, 0.437) solid;
 }
 .tool--btn {
   border: 1px solid rgba(37, 50, 113, 0);
@@ -67,7 +69,7 @@ body {
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   height: 40px;
-  width: 40px;
+  width: auto;
 }
 .tool--btn:focus {
   outline: none;
@@ -119,9 +121,6 @@ option {
 .file-element:first-child {
   margin-top: 7.5px;
 }
-button {
-  background: transparent;
-}
 .file-element {
   transition: all ease-in-out 0.1s;
   width: 100%;
@@ -141,8 +140,9 @@ button {
 }
 .file-element:hover {
   z-index: 2;
-  box-shadow: 0 2px 1px 0 rgba(8, 10, 39, 0.49);
+  box-shadow: 0 2px 1px 0 rgba(8, 10, 39, 0.39);
   text-decoration: underline solid rgba(0, 0, 0, 0.59);
+  color:rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
 #document-center {
@@ -186,9 +186,9 @@ button {
   background-color: rgba(128, 128, 128, 0);
 }
 #main {
+  margin-top: 5px;
   display: flex;
-  margin: 3px 0px 5px 5px;
-  width: 99%;
+  width: 100%;
   height: 100%;
 }
 
@@ -199,6 +199,7 @@ button {
   flex-direction: row;
   border-radius: 0px 0px 10px 10px;
   transition: all 0.2s ease-in-out;
+  border-bottom: 4px var(--color-theme) solid;
 }
 #header-options {
   margin: 0px;
@@ -234,9 +235,6 @@ button {
   max-height: 90vh;
   min-height: 500px;
   margin: 0.5px;
-  border-radius: 5px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
   color: #212121;
   text-align: left;
   font-family: "Noto Serif SC", serif;
@@ -301,7 +299,7 @@ button {
 #organizer {
   display: none;
   resize: both;
-  overflow-y:auto;
+  overflow-y: scroll;
   min-height: 200px;
   min-width: 400px;
   margin: 0.5px;
@@ -313,7 +311,7 @@ button {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   max-height: 83.6vh;
-  max-width:400px;
+  max-width: 400px;
 }
 #folder-displayer {
   display: flex;
@@ -420,12 +418,12 @@ summary::marker {
   border-radius: 4px;
   display: flex;
   align-items: center;
-  transition:all ease-in-out 0.1s;
+  transition: all ease-in-out 0.1s;
 }
-.header-options-bt:hover{
-  cursor:pointer;
-  transition:all ease-in-out 0.1s;
-  background-color:var(--color-theme);
+.header-options-bt:hover {
+  cursor: pointer;
+  transition: all ease-in-out 0.1s;
+  background-color: var(--color-theme);
 }
 .options-bar-svg {
   background-color: rgba(255, 255, 255, 0.212);
@@ -441,15 +439,22 @@ summary::marker {
   transition: 0.3s ease-in-out;
 }
 .tool:hover {
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   transform: translateY(-7px);
+}
+.tool-svg {
+  background: rgba(255, 255, 255, 0.028);
+  box-shadow: inset rgba(255, 255, 255, 0.25) 1px 1px 1px 1px, inset rgba(255, 255, 255, 0.3) 0.2px 0.2px 0.2px 0.2px;
+}
+.tool-svg:hover {
+  background: rgba(255, 255, 255, 0.418);
 }
 .tool-description {
   background: #3c3c3d;
   color: white;
   border-radius: 7px;
   font-weight: bolder;
-  font-size: 10px;
+  font-size: 11.5px;
   text-rendering: optimizeLegibility;
   padding: 5px;
   position: absolute;
@@ -467,9 +472,11 @@ summary::marker {
   outline: none;
   border: 3.1px solid var(--color-theme);
   border-radius: 10px;
+  box-shadow: inset rgba(255, 255, 255, 0.25) 1px 1px 1px 1px, inset rgba(255, 255, 255, 0.3) 0.2px 0.2px 0.2px 0.2px;
 }
 .tool-input:hover {
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.418);
 }
 #rotated-align {
   transform: rotate(180deg);
