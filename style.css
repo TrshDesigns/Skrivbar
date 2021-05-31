@@ -299,12 +299,12 @@ option {
 #organizer {
   display: none;
   resize: both;
-  overflow-y: scroll;
+  overflow-y:none;
   min-height: 200px;
   min-width: 400px;
   margin: 0.5px;
   padding-right: 9px;
-  background: rgba(238, 238, 238, 0.911);
+  background: rgba(255, 255, 255, 0.37);
   box-shadow: 0 8px 12px 0 rgba(10, 12, 43, 0.239);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -330,7 +330,6 @@ details,
 summary::marker {
   color: rgba(64, 75, 73, 0.083);
   z-index: 1;
-  margin: 5px;
 }
 #list-title {
   position: relative;
@@ -380,7 +379,7 @@ summary::marker {
   box-shadow: 0 4px 2px 0 rgba(17, 6, 75, 0.056);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  background-color: rgba(255, 255, 255, 0.307);
+  background-color:white;
   font-size: 15px;
   letter-spacing: 0.1px;
   color: black;
@@ -509,7 +508,7 @@ summary::marker {
   margin-left: 10px;
   width: 97%;
   text-align: left;
-  background: rgba(255, 255, 255, 0);
+  background: white;
   box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
@@ -526,7 +525,7 @@ summary::marker {
   width: 97%;
   height: 35px;
   margin-top: -18px;
-  background: rgba(255, 255, 255, 0);
+  background: white;
   box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
@@ -545,7 +544,7 @@ summary::marker {
   width: 97%;
   height: 35px;
   text-align: left;
-  background: rgba(255, 255, 255, 0);
+  background: white;
   box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
   color: rgb(0, 0, 0);
   backdrop-filter: blur(4px);
@@ -593,7 +592,7 @@ summary::marker {
 .list-item {
   border-radius: 10px;
   list-style: none;
-  background: none;
+  background:transparent;
   padding: 10px;
 }
 .background-stop {
