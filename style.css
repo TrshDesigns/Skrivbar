@@ -151,7 +151,6 @@ option {
   margin: -3.1px 5px 0px 0px;
   border-radius: 10px;
   background-color: var(--color-theme);
-  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.92);
   transition: all 0.7s;
   margin-left: 10px;
 }
@@ -281,7 +280,6 @@ option {
   margin: 5px 5px 0px 0px;
   border-radius: 10px;
   background-color: var(--color-theme);
-  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.95);
   transition: all 0.7s;
 }
 #organizer-hider:focus {
