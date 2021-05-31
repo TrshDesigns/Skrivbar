@@ -54,7 +54,6 @@ body {
   list-style: none;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.206);
-  box-shadow: 0 10px 15px 0 rgba(31, 38, 135, 0.212);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -101,7 +100,6 @@ option {
   margin-top: 3px;
   background: rgba(255, 255, 255, 0.829);
   color: rgb(3, 0, 23);
-  box-shadow: 1px 8px 30px 10px rgba(21, 26, 98, 0.177);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 5px;
@@ -153,7 +151,7 @@ option {
   margin: -3.1px 5px 0px 0px;
   border-radius: 10px;
   background-color: var(--color-theme);
-  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.192);
+  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.92);
   transition: all 0.7s;
   margin-left: 10px;
 }
@@ -239,7 +237,6 @@ option {
   text-align: left;
   font-family: "Noto Serif SC", serif;
   background: rgba(255, 255, 255, 0.11);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.274);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -284,7 +281,7 @@ option {
   margin: 5px 5px 0px 0px;
   border-radius: 10px;
   background-color: var(--color-theme);
-  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.245);
+  box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.95);
   transition: all 0.7s;
 }
 #organizer-hider:focus {
@@ -305,7 +302,6 @@ option {
   margin: 0.5px;
   padding-right: 9px;
   background: rgba(255, 255, 255, 0.37);
-  box-shadow: 0 8px 12px 0 rgba(10, 12, 43, 0.239);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
