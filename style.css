@@ -300,7 +300,7 @@ option {
   display: none;
   resize: both;
   overflow-y:none;
-  min-height: 200px;
+  min-height: 180px;
   min-width: 400px;
   margin: 0.5px;
   padding-right: 9px;
@@ -503,8 +503,6 @@ summary::marker {
   font-family: "Noto Serif SC", serif;
   position: relative;
   height: 35px;
-  top: -20px;
-  margin-bottom: -20px;
   margin-left: 10px;
   width: 97%;
   text-align: left;
@@ -524,7 +522,6 @@ summary::marker {
   margin-left: 10px;
   width: 97%;
   height: 35px;
-  margin-top: -18px;
   background: white;
   box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
   color: rgb(0, 0, 0);
@@ -536,11 +533,9 @@ summary::marker {
   z-index: 0;
 }
 #organizer-title-finished {
-  top: -36px;
   font-family: "Noto Serif SC", serif;
   position: relative;
   margin-left: 10px;
-  margin-bottom: -35px;
   width: 97%;
   height: 35px;
   text-align: left;
