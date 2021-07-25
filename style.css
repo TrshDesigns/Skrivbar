@@ -14,7 +14,7 @@
   background-color: transparent;
 }
 svg {
-  border-radius: 10px;
+  border-radius: 9px;
 }
 button {
   border: none;
@@ -53,7 +53,7 @@ body {
   resize: both;
   list-style: none;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.206);
+  background: rgba(255, 255, 255, 0.11);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -103,10 +103,12 @@ option {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 5px;
-  border: 1px solid rgba(43, 42, 42, 0.226);
+  border: 2px solid rgba(43, 42, 42, 0.226);
   resize: both;
   overflow: none;
   z-index: 2;
+  width: 100%;
+  height: 90vh;
 }
 #output:focus {
   background: rgba(255, 255, 255, 0.534);
@@ -140,7 +142,7 @@ option {
   z-index: 2;
   box-shadow: 0 2px 1px 0 rgba(8, 10, 39, 0.39);
   text-decoration: underline solid rgba(0, 0, 0, 0.59);
-  color:rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
 #document-center {
@@ -171,7 +173,7 @@ option {
 #file-displayer-hider {
   display: block;
   position: center;
-  padding: 5px;
+  padding: 5px 5px 0px 0px;
   margin: 2px 0px 0px 0px;
   border-radius: 10px;
   background-color: rgba(157, 157, 157, 0.054);
@@ -188,7 +190,6 @@ option {
   width: 100%;
   height: 100%;
 }
-
 #header-bar {
   background: #212121;
   width: 100%;
@@ -216,22 +217,21 @@ option {
   position: absolute;
   margin-left: 90vw;
 }
-#add {
-  position: relative;
-  left: 100px;
-  background-color: white;
-  border-radius: 5px;
+#addButton{
+  border-radius:8px;
+  height: 40px;
+  margin-left:10px;
 }
+
 #list {
   display: none;
   resize: both;
   overflow: auto;
   width: 250px;
-  height: 300px;
-  min-width: 250px;
+  min-width: 255px;
   max-height: 90vh;
-  min-height: 500px;
-  margin: 0.5px;
+  min-height: fit-content;
+  margin: 2px 0px 0px 0px;
   color: #212121;
   text-align: left;
   font-family: "Noto Serif SC", serif;
@@ -240,6 +240,7 @@ option {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.6);
+  margin-left: 5px;
 }
 .list-titles {
   position: relative;
@@ -248,7 +249,6 @@ option {
   width: 100%;
   margin-left: 0px;
   color: black;
-  border-radius: 10px;
   background: rgb(255, 255, 255);
   box-shadow: 0 1px 1px 0 rgba(31, 38, 135, 0.259);
   backdrop-filter: blur(4px);
@@ -294,7 +294,7 @@ option {
 #organizer {
   display: none;
   resize: both;
-  overflow-y:none;
+  overflow-y: auto;
   min-height: 180px;
   min-width: 400px;
   margin: 0.5px;
@@ -307,6 +307,29 @@ option {
   max-height: 83.6vh;
   max-width: 400px;
 }
+#organizer::-webkit-scrollbar {
+  width: 14px;
+}
+#organizer::-webkit-scrollbar-thumb {
+  background: var(--color-theme);
+}
+#organizer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.233);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.336);
+  border-radius: 10px;
+}
+#list::-webkit-scrollbar {
+  width: 14px;
+}
+#list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.233);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.336);
+  border-radius: 10px;
+}
+#list::-webkit-scrollbar-thumb {
+  background: var(--color-theme);
+}
+
 #folder-displayer {
   display: flex;
   flex-direction: row;
@@ -373,7 +396,7 @@ summary::marker {
   box-shadow: 0 4px 2px 0 rgba(17, 6, 75, 0.056);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  background-color:white;
+  background-color: white;
   font-size: 15px;
   letter-spacing: 0.1px;
   color: black;
@@ -433,14 +456,16 @@ summary::marker {
 }
 .tool:hover {
   transition: 0.2s ease-in-out;
-  transform: translateY(-7px);
+  transform: translateY(-3px);
 }
 .tool-svg {
-  background: rgba(255, 255, 255, 0.028);
-  box-shadow: inset rgba(255, 255, 255, 0.25) 1px 1px 1px 1px, inset rgba(255, 255, 255, 0.3) 0.2px 0.2px 0.2px 0.2px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(0.2px);
+  -webkit-backdrop-filter: blur(0.2px);
 }
 .tool-svg:hover {
   background: rgba(255, 255, 255, 0.418);
+  border: 1px solid rgba(255, 255, 255, 0.505);
 }
 .tool-description {
   background: #3c3c3d;
@@ -452,8 +477,9 @@ summary::marker {
   padding: 5px;
   position: absolute;
   font-weight: 500;
-  top: -60px;
-  right: 0.1px;
+  top: -50px;
+  left: 0.1px;
+  z-index: 1;
 }
 .no-outline:focus {
   outline: none;
@@ -465,7 +491,8 @@ summary::marker {
   outline: none;
   border: 3.1px solid var(--color-theme);
   border-radius: 10px;
-  box-shadow: inset rgba(255, 255, 255, 0.25) 1px 1px 1px 1px, inset rgba(255, 255, 255, 0.3) 0.2px 0.2px 0.2px 0.2px;
+  box-shadow: inset rgba(255, 255, 255, 0.25) 1px 1px 1px 1px,
+    inset rgba(255, 255, 255, 0.3) 0.2px 0.2px 0.2px 0.2px;
 }
 .tool-input:hover {
   cursor: pointer;
@@ -578,11 +605,41 @@ summary::marker {
   font-size: 18px;
   cursor: pointer;
 }
-.list-item {
+.organizer-item {
   border-radius: 10px;
   list-style: none;
-  background:transparent;
+  background: transparent;
   padding: 10px;
+}
+.list-item {
+  position: relative;
+  top: 0px;
+  width: 98%;
+  color: black;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 1px 1px 0 rgba(31, 38, 135, 0.259);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(68, 68, 68, 0.293);
+  margin: 10px 0px 10px 2.5px;
+  list-style: none;
+  transition: all 0.1s ease-in-out;
+  border-radius: 10px;
+}
+.list-name {
+  outline: none;
+  border: none;
+  font-family: "Noto Serif SC", serif;
+  width: 85%;
+  border-radius: 10px;
+}
+.deleteListItem {
+  width: 30px;
+  height: 30px;
+  border-radius:10px;
+}
+.background-main {
+  border: solid 2.1px var(--color-theme);
 }
 .background-stop {
   background-color: var(--stop-color);
