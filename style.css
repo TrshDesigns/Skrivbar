@@ -134,6 +134,7 @@ option {
   color: gray;
   box-shadow: 0 2px 2px 0 rgba(31, 38, 135, 0.32);
   z-index: 1;
+  margin:10px 0px 10px 0px;
 }
 .file-element p {
   margin: 4px;
@@ -179,6 +180,9 @@ option {
   background-color: rgba(157, 157, 157, 0.054);
   transition: all 0.7s;
   height: max-content;
+}
+.fa-bars:hover{
+  cursor:pointer;
 }
 #file-displayer::-webkit-scrollbar-thumb {
   color: gray;
@@ -295,7 +299,7 @@ option {
   display: none;
   resize: both;
   overflow-y: auto;
-  min-height: 180px;
+  min-height: 283px;
   min-width: 400px;
   margin: 0.5px;
   padding-right: 9px;
@@ -318,6 +322,9 @@ option {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.336);
   border-radius: 10px;
 }
+#organizer::-webkit-scrollbar-corner{
+  background:transparent;
+}
 #list::-webkit-scrollbar {
   width: 14px;
 }
@@ -329,7 +336,9 @@ option {
 #list::-webkit-scrollbar-thumb {
   background: var(--color-theme);
 }
-
+#list::-webkit-scrollbar-corner{
+  background:transparent;
+}
 #folder-displayer {
   display: flex;
   flex-direction: row;
@@ -520,13 +529,12 @@ summary::marker {
   background-color: rgb(196, 226, 254);
   transform: none;
 }
-#organizer-title-to-do {
+.organizer-title{
   font-family: "Noto Serif SC", serif;
   position: relative;
-  height: 35px;
   margin-left: 10px;
   width: 97%;
-  text-align: left;
+  padding:8px 0px 8px 0px;
   background: white;
   box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
   color: rgb(0, 0, 0);
@@ -536,57 +544,15 @@ summary::marker {
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 17px;
   z-index: 0;
+  text-align:center;
 }
-#organizer-title-in-process {
-  font-family: "Noto Serif SC", serif;
-  position: relative;
-  margin-left: 10px;
-  width: 97%;
-  height: 35px;
-  background: white;
-  box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
-  color: rgb(0, 0, 0);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-size: 17px;
-  z-index: 0;
-}
-#organizer-title-finished {
-  font-family: "Noto Serif SC", serif;
-  position: relative;
-  margin-left: 10px;
-  width: 97%;
-  height: 35px;
-  text-align: left;
-  background: white;
-  box-shadow: 0 3px 2px 0 rgba(31, 38, 135, 0.083);
-  color: rgb(0, 0, 0);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-size: 17px;
-  z-index: 0;
+.organizer-title:hover{
+  cursor: pointer;
+  -webkit-filter: brightness(1.2);
+  filter: brightness(1.2);
 }
 #current-folder-displayer {
   margin-left: 2px;
-}
-#organizer-title-to-do:hover {
-  cursor: pointer;
-  -webkit-filter: brightness(1.2);
-  filter: brightness(1.2);
-}
-#organizer-title-in-process:hover {
-  cursor: pointer;
-  -webkit-filter: brightness(1.2);
-  filter: brightness(1.2);
-}
-#organizer-title-finished:hover {
-  cursor: pointer;
-  -webkit-filter: brightness(1.2);
-  filter: brightness(1.2);
 }
 #finished-circle {
   color: var(--go-color);
