@@ -157,7 +157,7 @@ option {
   transition: all 0.7s;
   margin-left: 10px;
 }
-#file-displayer {
+#filedisplayer {
   display: block;
   flex-direction: column;
   max-height: auto;

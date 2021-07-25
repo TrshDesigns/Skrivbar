@@ -110,7 +110,7 @@ function extend(){
 }
 //hidefiledisplayer
 function hidefiledisplayer(){
-  const filedisplayer  = document.getElementById("file-displayer")
+  const filedisplayer  = document.getElementById("filedisplayer")
   if (filedisplayer.style.display === "block") {
     filedisplayer.style.display = "none";
   } else {

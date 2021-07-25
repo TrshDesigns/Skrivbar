@@ -437,7 +437,7 @@
                     <rect x="27.7275" y="11.2881" width="14.5455" height="5.69491" rx="2.84746" fill="#F2994A" />
                 </svg>
             </button>
-            <di id="file-displayer">
+            <di id="filedisplayer">
                 <div class="file-element">
                     <p>Document</p>
                 </div>
@@ -550,6 +550,11 @@
             group: 'listitems',
             ghostClass: 'background-main'
         });
+        new Sortable(filedisplayer, {
+            animation: 200,
+            group: 'listitems',
+            ghostClass: 'background-main'
+        })
     </script>
 </body>
 
