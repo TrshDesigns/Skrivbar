@@ -234,7 +234,7 @@ option {
   width: 250px;
   min-width: 255px;
   max-height: 90vh;
-  min-height: fit-content;
+  min-height:  50vh;
   margin: 2px 0px 0px 0px;
   color: #212121;
   text-align: left;
