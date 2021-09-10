@@ -635,7 +635,7 @@ summary::marker {
   #header-bar{
     height:60px;
     align-items: center;
-    align-content: center;
+    justify-content: center;
   }
   #header-bar button{
     height:40px;
