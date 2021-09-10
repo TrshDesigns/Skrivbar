@@ -616,3 +616,30 @@ summary::marker {
 .background-slow {
   background-color: var(--slow-color);
 }
+@media (max-width: 600px) {
+  #list-organizer-hider {
+    display:none;
+  }
+  #list{
+    display:none;
+  }
+  .toolbar{
+    display:none;
+  }
+  #file-displayer-hider{
+    display:none;
+  }
+  #organizer-hider{
+    display:none;
+  }
+  #header-bar{
+    height:60px;
+    align-items: center;
+    align-content: center;
+  }
+  #header-bar button{
+    height:40px;
+  }
+}
+
+
