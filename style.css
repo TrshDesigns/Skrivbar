@@ -647,10 +647,13 @@ summary::marker {
     height:100vh;
   }
   .tool-list{
-    width:70px;
+    width:40px;
     height:100vh;
+    overflow-y:scroll;
     display:list-item;
-    overflow-y: scroll;
+  }
+  .tool-list::-webkit-scrollbar{
+    width:1px;
   }
   #output{
     z-index:0;
