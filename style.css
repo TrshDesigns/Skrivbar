@@ -629,9 +629,7 @@ summary::marker {
     display:none;
   }
   #header-bar{
-    height:40px;
-    align-items: center;
-    justify-content: center;
+    display:none;
   }
 }
 @media (max-width: 600px) {
@@ -669,6 +667,9 @@ summary::marker {
   }
   .vertical-separator{
     height:40px;
+  }
+  header{
+    display: none;
   }
 }
 
