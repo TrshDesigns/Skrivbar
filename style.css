@@ -646,7 +646,7 @@ summary::marker {
   }
   .toolbar{
     flex-direction: column;
-    width:80px;
+    width: 70px;
     height:90vh;
   }
   .tool-list{
