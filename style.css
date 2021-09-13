@@ -628,9 +628,6 @@ summary::marker {
   #organizer-hider{
     display:none;
   }
-  #header-bar{
-    display:none;
-  }
 }
 @media (max-width: 600px) {
   #list-organizer-hider {
@@ -642,19 +639,26 @@ summary::marker {
   .toolbar{
     flex-direction: column;
     width: 70px;
-    height:100vh;
+    min-height:100vh;
   }
   .tool-list{
-    width:40px;
-    height:100vh;
+    width: 70px;
+    height:max-content;
+    min-width:70px;
     overflow-y:scroll;
     display:list-item;
+    border-top:4px solid var(--color-theme);
+    border-bottom:4px solid var(--color-theme);
+    /*soft box shadow*/
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.274);
   }
   .tool-list::-webkit-scrollbar{
-    width:1px;
+    display:none;
   }
   #output{
-    z-index:0;
+    height:100vh;
+    min-height:100vh;
+    margin:0px 10px 0px 10px;
   }
   .tool-description{
     z-index:10;
@@ -664,12 +668,6 @@ summary::marker {
   }
   #organizer-hider{
     display:none;
-  }
-  .vertical-separator{
-    height:40px;
-  }
-  header{
-    display: none;
   }
 }
 
