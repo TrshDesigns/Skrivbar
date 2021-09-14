@@ -657,7 +657,7 @@ summary::marker {
   }
   #output{
     height:100vh;
-    min-height:100vh;
+    min-height:90vh;
     margin:0px 10px 0px 10px;
   }
   .tool-description{
