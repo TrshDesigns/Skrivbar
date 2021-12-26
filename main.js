@@ -91,7 +91,6 @@ function createNewList() {
 }
 //delete a list item
 function deleteListItem() {
-  const listItems = document.getElementById("listitems");
   const listItem = document.getElementsByClassName("list-item");
   //delete the exact item in wicth the deleteListItem function was called
   listItem[0].remove();
@@ -112,6 +111,7 @@ function extend() {
 //hidefiledisplayer
 function hidefiledisplayer() {
   const filedisplayer = document.getElementById("filedisplayer");
+  const filedisplayerhider = document.getElementById("file-displayer-hider");
   if (filedisplayer.style.display === "block") {
     filedisplayer.style.display = "none";
   } else {

@@ -102,7 +102,7 @@ option {
   color: rgb(3, 0, 23);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-radius: 5px;
+  border-radius: 2.3px;
   border: 2px solid rgba(43, 42, 42, 0.226);
   resize: both;
   overflow: none;
@@ -126,7 +126,7 @@ option {
   width: 100%;
   height: 80px;
   margin: 10px 0px 10px 0px;
-  border-radius: 10px;
+  border-radius: 3.8px;
   background: rgb(255, 255, 255);
   text-decoration: underline solid rgba(0, 0, 0, 0.19);
   text-align: center;
@@ -140,6 +140,7 @@ option {
   margin: 4px;
 }
 .file-element:hover {
+  transition:all 0.1s ease-in-out;
   z-index: 2;
   box-shadow: 0 2px 1px 0 rgba(8, 10, 39, 0.39);
   text-decoration: underline solid rgba(0, 0, 0, 0.59);
@@ -151,13 +152,14 @@ option {
   padding: 0px;
   height: 50px;
   width: 50px;
-  margin: -3.1px 5px 0px 0px;
+  margin: -3.1px 10px 0px 0px;
   border-radius: 10px;
   background-color: var(--color-theme);
   transition: all 0.7s;
   margin-left: 10px;
 }
 #filedisplayer {
+  transition: all 0.7s;
   display: block;
   flex-direction: column;
   max-height: auto;
@@ -172,14 +174,17 @@ option {
   background-color: rgba(255, 255, 255, 0.728);
 }
 #file-displayer-hider {
-  display: block;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
   position: center;
-  padding: 5px 5px 0px 0px;
+  padding: 5px 0px 5px 0px;
   margin: 2px 0px 0px 0px;
   border-radius: 10px;
   background-color: rgba(157, 157, 157, 0.054);
   transition: all 0.7s;
   height: max-content;
+  /*add a softshadow*/
 }
 .fa-bars:hover{
   cursor:pointer;
@@ -210,6 +215,15 @@ option {
   display: flex;
   flex-direction: row;
 }
+
+#list-details{
+  border-radius:2.5px;
+  /*add a soft shadow*/
+  box-shadow: 0 0px 5px 0 rgba(31, 38, 135, 0.32);
+  margin:15px 0px 15px 0px;
+  padding:5px 0px 55px 0px;
+}
+
 .vertical-separator {
   margin: 3px 0px 0px 3px;
   height: 20px;
@@ -254,10 +268,8 @@ option {
   margin-left: 0px;
   color: black;
   background: rgb(255, 255, 255);
-  box-shadow: 0 1px 1px 0 rgba(31, 38, 135, 0.259);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(68, 68, 68, 0.293);
   margin: 10px 0px 10px 0px;
   list-style: none;
   transition: all 0.1s ease-in-out;
@@ -359,15 +371,13 @@ summary::marker {
 }
 #list-title {
   position: relative;
-  left: 10px;
-  width: 90%;
-  border-radius: 10px;
+  width: 100%;
   background: rgba(255, 255, 255, 255);
   box-shadow: 0 2px 4px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(158, 150, 150, 0.18);
   font-size: 22px;
 }
 .no-background {
