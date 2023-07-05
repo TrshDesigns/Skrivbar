@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skrivbar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1fe7acc072.js" crossorigin="anonymous"></script>
+    <script src="./renderer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.10.2/Sortable.min.js"></script>
+    <!--add mobile viewport meta tag.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--meta tags-->
+        <meta name="theme-color" content="#34a0ff" />
+    <meta name="keywords" content="writing, social, organizing, platform, documents" />
+    <meta name="author" content="TrshDesigns" />
+    <meta name="copyright" content="OpenSource" />
+    <meta name="robots" content="index" />
+    <meta http-equiv="expires" content="43200" />
+    <!--add favicon -->
+    <link rel="icon" type="image/png" href="/resources/icons/Skrivbar Logo 16.png">
+</head>
+
+<body>
+    <!--add service worker-->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <header id="header-bar">
+        <ul id="header-options">
+            <li>
+                <button onclick="changebackground();" class="no-background header-options-bt no-outline">
+                    Background
+                    <svg width="20" height="20" viewBox="0 0 80 80" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 20.7305C12 18.5213 13.7909 16.7305 16 16.7305H64C66.2091 16.7305 68 18.5213 68 20.7305V52.7305H47.874C46.0504 52.7305 44.4579 53.9638 44.0014 55.7289L44 55.7305H36L35.9986 55.729C35.5421 53.9638 33.9496 52.7305 32.126 52.7305H12V20.7305Z"
+                            fill="#C2CCDE" />
+                        <path
+                            d="M32.126 56.7305H4.15215C4.06812 56.7305 4 56.7986 4 56.8826C4 61.2169 7.51361 64.7305 11.8479 64.7305H68.1521C72.4864 64.7305 76 61.2169 76 56.8826C76 56.7986 75.9319 56.7305 75.8479 56.7305H47.874C47.4299 58.4557 45.8638 59.7305 44 59.7305H36C34.1362 59.7305 32.5701 58.4557 32.126 56.7305Z"
+                            fill="#C2CCDE" />
+                    </svg>
+                    <input type="text"
+                        value="https://images.unsplash.com/photo-1615554948797-b02cd383fa8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
+                        id="bgchanger" placeholder="" />
+                </button>
+            </li>
+            <div class="vertical-separator"></div>
+            <li>
+                <button class="no-background header-options-bt no-outline" onclick="savefile()">Save<svg
+                         width="20" height="20" viewBox="0 0 80 80" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M53.1716 13.1716C52.4214 12.4214 51.404 12 50.3431 12H16C13.7909 12 12 13.7909 12 16V64C12 66.2091 13.7909 68 16 68H64C66.2091 68 68 66.2091 68 64V29.6569C68 28.596 67.5786 27.5786 66.8284 26.8284L53.1716 13.1716Z"
+                            fill="#2F80ED" />
+                        <path
+                            d="M66.8284 26.8284L68.2426 25.4142L66.8284 26.8284ZM53.1716 13.1716L51.7574 14.5858L53.1716 13.1716ZM16 14H50.3431V10H16V14ZM14 64V16H10V64H14ZM64 66H16V70H64V66ZM66 29.6569V64H70V29.6569H66ZM51.7574 14.5858L65.4142 28.2426L68.2426 25.4142L54.5858 11.7574L51.7574 14.5858ZM70 29.6569C70 28.0656 69.3679 26.5394 68.2426 25.4142L65.4142 28.2426C65.7893 28.6177 66 29.1264 66 29.6569H70ZM64 70C67.3137 70 70 67.3137 70 64H66C66 65.1046 65.1046 66 64 66V70ZM10 64C10 67.3137 12.6863 70 16 70V66C14.8954 66 14 65.1046 14 64H10ZM50.3431 14C50.8736 14 51.3823 14.2107 51.7574 14.5858L54.5858 11.7574C53.4606 10.6321 51.9344 10 50.3431 10V14ZM16 10C12.6863 10 10 12.6863 10 16H14C14 14.8954 14.8954 14 16 14V10Z"
+                            fill="#2F80ED" />
+                        <path
+                            d="M59 44H21C20.4477 44 20 44.4477 20 45V67C20 67.5523 20.4477 68 21 68H59C59.5523 68 60 67.5523 60 67V45C60 44.4477 59.5523 44 59 44Z"
+                            fill="#F2F2F2" stroke="#F2F2F2" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M28 52H52" stroke="#56CCF2" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M28 60H52" stroke="#56CCF2" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M48 27V13C48 12.4477 47.5523 12 47 12H21C20.4477 12 20 12.4477 20 13V27C20 27.5523 20.4477 28 21 28H47C47.5523 28 48 27.5523 48 27Z"
+                            fill="#56CCF2" stroke="#56CCF2" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg></button>
+            </li>
+            <li>
+                <button class="no-background header-options-bt no-outline" onclick="extend()"><i class="fas fa-caret-down"></i></button>
+            </li>
+        </ul>
+    </header>
+    <main id="main">
+        <div>
+            
+        </div>
+        <button id="list-organizer-hider" onclick="hidelistorganizer()">
+            <svg width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M52.9737 62.9794C52.2422 63.6338 51.293 63.9983 50.3064 63.9981L45.7143 63.9975L20.0003 63.9997C17.7911 63.9999 16 62.2089 16 59.9997L16 20C16 17.7909 17.7909 16 20 16L60 16C62.2091 16 64 17.7909 64 20V50.2832V50.3068C64 51.2736 63.65 52.2043 63.0202 52.9295C63.2849 52.5341 63.0095 51.967 62.5 51.967H56C53.7908 51.967 52 53.7578 52 55.967V62.4669C52 62.9813 52.5779 63.257 52.9737 62.9794Z"
+                    fill="#F2C94C" />
+                <path
+                    d="M50.3064 63.9981L50.3061 65.9981L50.3064 63.9981ZM52.9737 62.9794L51.8253 61.342C52.6921 60.7341 53.8824 60.907 54.5405 61.7363C55.1985 62.5657 55.0962 63.7642 54.3072 64.47L52.9737 62.9794ZM45.7143 63.9975L45.7141 61.9975H45.7146L45.7143 63.9975ZM20.0003 63.9997L20.0005 65.9997L20.0003 63.9997ZM16 59.9997L18 59.9997L16 59.9997ZM16 20H14H16ZM60 16V14V16ZM63.0202 52.9295L64.5302 54.241C63.8377 55.0383 62.6447 55.1598 61.8057 54.5186C60.9667 53.8773 60.7708 52.6943 61.3583 51.8168L63.0202 52.9295ZM50.3066 61.9981C50.7999 61.9982 51.2745 61.816 51.6402 61.4888L54.3072 64.47C53.2098 65.4517 51.7861 65.9983 50.3061 65.9981L50.3066 61.9981ZM45.7146 61.9975L50.3066 61.9981L50.3061 65.9981L45.714 65.9975L45.7146 61.9975ZM20.0002 61.9997L45.7141 61.9975L45.7145 65.9975L20.0005 65.9997L20.0002 61.9997ZM18 59.9997C18 61.1043 18.8955 61.9998 20.0002 61.9997L20.0005 65.9997C16.6866 65.9999 14 63.3136 14 59.9997L18 59.9997ZM18 20L18 59.9997L14 59.9997L14 20H18ZM20 18C18.8954 18 18 18.8954 18 20H14C14 16.6863 16.6863 14 20 14V18ZM60 18L20 18V14L60 14V18ZM62 20C62 18.8954 61.1046 18 60 18V14C63.3137 14 66 16.6863 66 20H62ZM62 50.2832L62 20H66V50.2832H62ZM62 50.3068V50.2832H66V50.3068H62ZM61.5101 51.6181C61.825 51.2556 62 50.7902 62 50.3068H66C66 51.757 65.475 53.1531 64.5302 54.241L61.5101 51.6181ZM62.5 49.967C64.6698 49.967 65.8024 52.369 64.682 54.0423L61.3583 51.8168C60.7675 52.6992 61.3493 53.967 62.5 53.967V49.967ZM56 49.967H62.5V53.967H56V49.967ZM50 55.967C50 52.6533 52.6863 49.967 56 49.967V53.967C54.8954 53.967 54 54.8624 54 55.967H50ZM50 62.4669V55.967H54V62.4669H50ZM54.1221 64.6169C52.4461 65.7923 50 64.6551 50 62.4669H54C54 61.3075 52.7097 60.7218 51.8253 61.342L54.1221 64.6169Z"
+                    fill="#F2C94C" />
+                <path
+                    d="M62.9393 53.0604L53.0606 62.939C52.6692 63.3304 52 63.0532 52 62.4997V55.9997C52 53.7906 53.7909 51.9997 56 51.9997H62.5C63.0535 51.9997 63.3307 52.669 62.9393 53.0604Z"
+                    fill="#F2994A" />
+                <path
+                    d="M53.0606 62.939L54.4748 64.3532L54.4748 64.3532L53.0606 62.939ZM62.9393 53.0604L64.3535 54.4746L64.3535 54.4746L62.9393 53.0604ZM51.6464 61.5248L61.5251 51.6461L64.3535 54.4746L54.4748 64.3532L51.6464 61.5248ZM50 62.4997V55.9997H54V62.4997H50ZM56 49.9997H62.5V53.9997H56V49.9997ZM50 55.9997C50 52.686 52.6863 49.9997 56 49.9997V53.9997C54.8954 53.9997 54 54.8951 54 55.9997H50ZM61.5251 51.6461C60.6566 52.5147 61.2717 53.9997 62.5 53.9997V49.9997C64.8353 49.9997 66.0049 52.8232 64.3535 54.4746L61.5251 51.6461ZM54.4748 64.3532C52.8235 66.0045 50 64.835 50 62.4997H54C54 61.2714 52.515 60.6563 51.6464 61.5248L54.4748 64.3532Z"
+                    fill="#F2994A" />
+            </svg>
+        </button>
+        <div id="list">
+            <h1 id="list-title">List</h1>
+            <div id=list-organizer>
+                <button id="addButton" onclick="createNewList()">
+                    <svg id="add" width="30" height="30" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.7637 40L37.7637 40L41.7637 40L61.7637 40" stroke="#EB5757" stroke-width="4"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M39.7637 18L39.7637 38L39.7637 42L39.7637 62" stroke="#F2994A" stroke-width="4"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <details id="list-details">
+                    <summary id="list-summary" class="no-outline">
+                        <div class="list-titles" id="folder-displayer">
+                            <p>Current Folder: </p>
+                            <p id="current-folder-displayer"></p>
+                        </div>
+                    </summary>
+                    <div id="listitems">
+                        <li class="list-item"><input class="list-name" value="Re Write Me!" type="text" maxlength="30"><button class="deleteListItem" onclick="deleteListItem()"><svg width="30" height="30" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24.4437 24.5566L38.5858 38.6988L41.4142 41.5272L55.5564 55.6693" stroke="#F2994A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M55.5563 24.5566L41.4142 38.6988L38.5858 41.5272L24.4436 55.6693" stroke="#F2C94C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg></button></li>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div class="toolbar">
+            <ul class="tool-list">
+                <li class="tool">
+                    <button class="tool--btn">
+                        <select id="input-font" class=" tool-input no-outline"
+                            onchange="execCommandWithArg('fontName', this.value);">
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Sans serif">Sans serif</option>
+                            <option value="Courier New">Courier</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Palatino">Palatino</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Arial Black">Arial Black</option>
+                            <option value="Tahoma">Tahoma</option>
+                        </select>
+                        <div id="description-font">
+                            <p class="tool-description">Font</p>
+                        </div>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M33.4675 37.8502L32.9824 39.7905L33.4675 37.8502ZM41.0667 39.75L41.5841 37.8181C41.5734 37.8152 41.5626 37.8124 41.5517 37.8097L41.0667 39.75ZM47.5069 41.4751L48.0244 39.5432L47.5069 41.4751ZM26 51.5C26 50.3954 25.1046 49.5 24 49.5C22.8954 49.5 22 50.3954 22 51.5H26ZM52.9333 28.5C52.9333 29.6046 53.8288 30.5 54.9333 30.5C56.0379 30.5 56.9333 29.6046 56.9333 28.5H52.9333ZM42.9333 14H36.1573V18H42.9333V14ZM36 66H44.5425V62H36V66ZM32.9824 39.7905L40.5816 41.6903L41.5517 37.8097L33.9525 35.9099L32.9824 39.7905ZM40.5492 41.6819L46.9895 43.407L48.0244 39.5432L41.5841 37.8181L40.5492 41.6819ZM26 52V51.5H22V52H26ZM52.9333 28V28.5H56.9333V28H52.9333ZM58 52.5425C58 46.4511 53.9084 41.1192 48.0244 39.5432L46.9895 43.407C51.1245 44.5146 54 48.2616 54 52.5425H58ZM23.0667 27.0907C23.0667 33.0976 27.1549 38.3336 32.9824 39.7905L33.9525 35.9099C29.9057 34.8982 27.0667 31.2621 27.0667 27.0907H23.0667ZM44.5425 66C51.9749 66 58 59.9749 58 52.5425H54C54 57.7657 49.7657 62 44.5425 62V66ZM36 62C30.4772 62 26 57.5229 26 52H22C22 59.732 28.268 66 36 66V62ZM42.9333 18C48.4562 18 52.9333 22.4772 52.9333 28H56.9333C56.9333 20.268 50.6653 14 42.9333 14V18ZM36.1573 14C28.9276 14 23.0667 19.8609 23.0667 27.0907H27.0667C27.0667 22.07 31.1367 18 36.1573 18V14Z"
+                                fill="#EB5757" />
+                            <path d="M16 40H64" stroke="#EB5757" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <div id="description-strike">
+                            <p class="tool-description">Strike</p>
+                        </div>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn redo-apply" onclick="document.execCommand( 'redo',false,null);">
+                        <svg class="tool-svg" id="undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
+                                fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Redo</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle undo-apply" onclick="document.execCommand( 'undo',false,null);">
+                        <svg class="tool-svg" id="rotated-undo" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M30.0048 16.1016L30.7701 17.9493V17.9493L30.0048 16.1016ZM37.1902 16.2872C38.2877 16.1616 39.0755 15.1702 38.9499 14.0728C38.8244 12.9754 37.8329 12.1876 36.7355 12.3131L37.1902 16.2872ZM36.7541 12.311C35.6566 12.4358 34.8681 13.4267 34.9929 14.5242C35.1178 15.6217 36.1086 16.4102 37.2061 16.2854L36.7541 12.311ZM37.2894 16.2761C38.3873 16.1551 39.1793 15.167 39.0583 14.069C38.9373 12.9711 37.9492 12.1791 36.8513 12.3001L37.2894 16.2761ZM16.0048 30.1016L14.157 29.3362H14.157L16.0048 30.1016ZM16.0048 49.9006L14.157 50.6659H14.157L16.0048 49.9006ZM30.0048 63.9006L29.2394 65.7483H29.2394L30.0048 63.9006ZM63.8038 49.9006L65.6515 50.6659L63.8038 49.9006ZM66.4711 48.4195C66.8048 47.3665 66.2217 46.2424 65.1687 45.9087C64.1158 45.575 62.9917 46.1581 62.658 47.211L66.4711 48.4195ZM30.7701 17.9493C32.8411 17.0915 35.0024 16.5375 37.1902 16.2872L36.7355 12.3131C34.1809 12.6054 31.6572 13.2523 29.2394 14.2538L30.7701 17.9493ZM37.2061 16.2854C37.2339 16.2822 37.2616 16.2791 37.2894 16.2761L36.8513 12.3001C36.8189 12.3037 36.7865 12.3073 36.7541 12.311L37.2061 16.2854ZM17.8525 30.8669C20.2751 25.0184 24.9217 20.3718 30.7701 17.9493L29.2394 14.2538C22.4108 17.0823 16.9855 22.5076 14.157 29.3362L17.8525 30.8669ZM17.8525 49.1352C15.43 43.2867 15.43 36.7154 17.8525 30.8669L14.157 29.3362C11.3285 36.1648 11.3285 43.8373 14.157 50.6659L17.8525 49.1352ZM30.7701 62.0528C24.9217 59.6303 20.2751 54.9837 17.8525 49.1352L14.157 50.6659C16.9855 57.4945 22.4108 62.9198 29.2394 65.7483L30.7701 62.0528ZM49.0384 62.0528C43.1899 64.4753 36.6186 64.4753 30.7701 62.0528L29.2394 65.7483C36.068 68.5768 43.7405 68.5768 50.5691 65.7483L49.0384 62.0528ZM61.956 49.1352C59.5335 54.9837 54.8869 59.6303 49.0384 62.0528L50.5691 65.7483C57.3977 62.9198 62.823 57.4945 65.6515 50.6659L61.956 49.1352ZM65.6515 50.6659C65.9579 49.9263 66.2311 49.1768 66.4711 48.4195L62.658 47.211C62.4524 47.8596 62.2184 48.5016 61.956 49.1352L65.6515 50.6659Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M37.0703 23.4038L37.0703 6.59619C37.0703 4.90008 39.121 4.05067 40.3203 5.25L47.949 12.8787C49.1206 14.0503 49.1206 15.9497 47.949 17.1213L40.3203 24.75C39.121 25.9493 37.0703 25.0999 37.0703 23.4038Z"
+                                fill="#2F80ED" stroke="#2F80ED" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Undo</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn" onclick="execCmd('copy');"><svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M30 54.9998L30 39.5695C30 38.5152 30.4163 37.5034 31.1583 36.7544L41.6276 26.1863C42.3787 25.4281 43.4016 25.0015 44.4689 25.0014L50 25.0008V17.0002C50 14.7907 48.2087 12.9998 45.9993 13.0002L37.8095 13.0016L22.0004 12.9999C19.7911 12.9996 18 14.7906 18 16.9999L18 50.9998C18 53.2089 19.7909 54.9998 22 54.9998H30Z"
+                                fill="#F2C94C" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M41.73 26.0869C42.4703 25.3912 43.4494 25.0019 44.4689 25.0017L57.9996 25.0002C60.2089 25 62 26.7909 62 29.0002L62 63.0002C62 65.2093 60.2091 67.0002 58 67.0002H34C31.7909 67.0002 30 65.2093 30 63.0002L30 39.5699C30 38.5532 30.3871 37.5761 31.0801 36.836C30.7326 37.2614 31.0304 37.9219 31.6 37.9219L38.8 37.9219C41.0091 37.9219 42.8 36.131 42.8 33.9219V26.6141C42.8 26.051 42.1531 25.7559 41.73 26.0869Z"
+                                fill="#F2994A" />
+                            <path
+                                d="M31.1257 36.7845L41.6631 26.1458C42.0808 25.724 42.7998 26.0198 42.7998 26.6134V33.9212C42.7998 36.1304 41.0089 37.9212 38.7998 37.9212H31.5998C31.0069 37.9212 30.7085 37.2057 31.1257 36.7845Z"
+                                fill="#F2F2F2" />
+                        </svg>
+                        <p class="tool-description">Copy</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn" onclick="execCmd('cut');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M30.7836 55.2639C30.991 55.2191 31.1916 55.1297 31.3706 54.9944L42.6338 46.4861C42.8211 46.3446 42.9727 46.161 43.0762 45.9502L57.2088 17.1593C57.5598 16.4442 57.2906 15.5794 56.5958 15.1899C55.9009 14.8003 55.0227 15.0219 54.5958 15.6945L37.4766 42.6652L29.4778 52.6329C30.0995 53.4138 30.5408 54.3133 30.7836 55.2639ZM40.0646 43.1732C40.5429 43.4494 40.7067 44.0609 40.4306 44.5392C40.1544 45.0175 39.5429 45.1814 39.0646 44.9053C38.5863 44.6291 38.4224 44.0175 38.6985 43.5392C38.9747 43.0609 39.5863 42.8971 40.0646 43.1732Z"
+                                fill="#2F80ED" />
+                            <path
+                                d="M29.0636 62.2274C27.1306 65.5754 22.8494 66.7225 19.5014 64.7896V64.7896C16.1533 62.8566 15.0062 58.5754 16.9392 55.2274L17.9392 53.4953C19.8722 50.1473 24.1533 49.0001 27.5014 50.9331V50.9331C30.8494 52.8661 31.9966 57.1473 30.0636 60.4953L29.0636 62.2274Z"
+                                stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M48.3438 55.2639C48.1365 55.2191 47.9359 55.1297 47.7568 54.9944L36.4937 46.4861C36.3063 46.3446 36.1548 46.161 36.0513 45.9502L21.9187 17.1593C21.5676 16.4442 21.8368 15.5794 22.5317 15.1899C23.2265 14.8003 24.1047 15.0219 24.5316 15.6945L41.6508 42.6652L49.6496 52.6329C49.0279 53.4138 48.5866 54.3133 48.3438 55.2639ZM39.0629 43.1732C38.5846 43.4494 38.4207 44.0609 38.6969 44.5392C38.973 45.0175 39.5846 45.1814 40.0629 44.9053C40.5412 44.6291 40.705 44.0175 40.4289 43.5392C40.1528 43.0609 39.5412 42.8971 39.0629 43.1732Z"
+                                fill="#2F80ED" />
+                            <path
+                                d="M50.0639 62.2274C51.9969 65.5754 56.278 66.7225 59.6261 64.7896V64.7896C62.9741 62.8566 64.1212 58.5754 62.1882 55.2274L61.1882 53.4953C59.2552 50.1473 54.9741 49.0001 51.6261 50.9331V50.9331C48.278 52.8661 47.1309 57.1473 49.0639 60.4953L50.0639 62.2274Z"
+                                stroke="#2F80ED" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Cut</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle orderedlist" onclick="execCmd('insertOrderedList');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            
+                            <path d="M29 24L53 24" stroke="#2F80ED" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M29 32H45" stroke="#2F80ED" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M29 40L53 40" stroke="#2F80ED" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M29 48H45" stroke="#2F80ED" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M29 56L53 56" stroke="#2F80ED" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 28L17 28" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 20L17 20" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 36L17 36" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 52L17 52" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 60L17 60" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 44L17 44" stroke="#F2994A" stroke-width="6" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Ordered List</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn fontStyle unorderedlist" onclick="execCmd('insertUnorderedList');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M36 52.5C33.7909 52.5 32 54.2909 32 56.5V66C32 68.2091 33.7909 70 36 70H66C68.2091 70 70 68.2091 70 66V56.5C70 54.2909 68.2091 52.5 66 52.5L36 52.5Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M66 47.5C68.2091 47.5 70 45.7091 70 43.5V36C70 33.7909 68.2091 32 66 32L36 32C33.7909 32 32 33.7909 32 36V43.5C32 45.7091 33.7909 47.5 36 47.5L66 47.5Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M70 14V24C70 26.2091 68.2091 28 66 28L36 28C33.7909 28 32 26.2091 32 24V14C32 11.7909 33.7909 10 36 10H66C68.2091 10 70 11.7909 70 14Z"
+                                fill="#56CCF2" />
+                            <path
+                                d="M28 14C28 11.7909 26.2091 10 24 10H14C11.7909 10 10 11.7909 10 14V24C10 26.2091 11.7909 28 14 28H24C26.2091 28 28 26.2091 28 24V14Z"
+                                fill="#2F80ED" />
+                            <path
+                                d="M14 47.5C11.7909 47.5 10 45.7091 10 43.5V36C10 33.7909 11.7909 32 14 32H24C26.2091 32 28 33.7909 28 36V43.5C28 45.7091 26.2091 47.5 24 47.5H14Z"
+                                fill="#2F80ED" />
+                            <path
+                                d="M14 52.5C11.7909 52.5 10 54.2909 10 56.5V66C10 68.2091 11.7909 70 14 70H24C26.2091 70 28 68.2091 28 66V56.5C28 54.2909 26.2091 52.5 24 52.5H14Z"
+                                fill="#2F80ED" />
+                        </svg>
+                        <p class="tool-description">Unordered List</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn">
+                        <input class="no-outline tool-input color-apply" type="color"
+                            onchange="execCommandWithArg('foreColor', this.value);" id="myColor">
+                        <p class="tool-description">Text</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn">
+                        <input class="no-outline tool-input color-apply" type="color"
+                            onchange="execCommandWithArg('hiliteColor', this.value);" id="myColor" />
+                        <p class="tool-description">Background</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-center">
+                        <div class="custom-select">
+                            <select class="tool-input" id="fontSize"
+                                onclick="execCommandWithArg('fontSize', this.value);">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                        <p class="tool-description">Font Size</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-left" onclick="execCmd('justifyLeft');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Align Left</p>
+                    </button>
+                <li class="tool">
+                    <button class="tool--btn fontStyle align-right" onclick="execCmd('justifyRight');">
+                        <svg class="tool-svg" id="rotated-align" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 51.9648L44 51.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 27.9648L44 27.9648" stroke="#56CCF2" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Align Right</p>
+                    </button>
+                </li>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn align-center" onclick="execCmd('justifyCenter');">
+                        <justifyCenter>
+                            <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M26 51.9648L54 51.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M26 27.9648L54 27.9648" stroke="#56CCF2" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 39.9648L64 39.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 63.9648L64 63.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 15.9648L64 15.9648" stroke="#2F80ED" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </justifyCenter>
+                        <p class="tool-description">Align Center</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn" onclick="execCmd('bold');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 40H41V36H24V40ZM41 40H43V36H41V40ZM41 14H24.5V18H41V14ZM43 62H24.5V66H43V62ZM22 16.5V38H26V16.5H22ZM22 38V63.5H26V38H22ZM41 40C48.1797 40 54 34.1797 54 27H50C50 31.9706 45.9706 36 41 36V40ZM41 18C45.9706 18 50 22.0294 50 27H54C54 19.8203 48.1797 14 41 14V18ZM43 40C49.0751 40 54 44.9249 54 51H58C58 42.7157 51.2843 36 43 36V40ZM24.5 62C25.3284 62 26 62.6716 26 63.5H22C22 64.8807 23.1193 66 24.5 66V62ZM54 51C54 57.0751 49.0751 62 43 62V66C51.2843 66 58 59.2843 58 51H54ZM24.5 14C23.1193 14 22 15.1193 22 16.5H26C26 17.3284 25.3284 18 24.5 18V14Z"
+                                fill="#2F80ED" />
+                        </svg>
+                        <p class="tool-description">Bold</p>
+                </li>
+                <li class="tool">
+                    <button class=" tool--btn italic" onclick="execCmd('italic');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 16H55" stroke="#219653" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M25 64H45" stroke="#219653" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M45 16L35 64" stroke="#219653" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Italic</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" data-command="underline" class="tool--btn" onclick="execCmd('underline');">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M26 16C26 14.8954 25.1046 14 24 14C22.8954 14 22 14.8954 22 16H26ZM58 16C58 14.8954 57.1046 14 56 14C54.8954 14 54 14.8954 54 16H58ZM22 16V49H26V16H22ZM39 66H41V62H39V66ZM58 49V16H54V49H58ZM41 66C50.3888 66 58 58.3888 58 49H54C54 56.1797 48.1797 62 41 62V66ZM22 49C22 58.3888 29.6112 66 39 66V62C31.8203 62 26 56.1797 26 49H22Z"
+                                fill="#F2994A" />
+                        </svg>
+                        <p class="tool-description">Underline</p>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button type="button" class="tool--btn"
+                        onclick="execCommandWithArg('insertImage', prompt('Enter the image URL', ''));">
+                        <svg class="tool-svg" width="35" height="35" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="18" y="18" width="44" height="44" rx="6" fill="#2F80ED" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M24 62L43 62L56 62C58.8222 62 61.1893 60.0515 61.8294 57.4264C61.905 57.1164 61.7952 56.7952 61.5696 56.5696L55.7071 50.7071C55.3166 50.3166 54.6834 50.3166 54.2929 50.7071L50.5212 54.4789C50.1186 54.8815 49.4616 54.8672 49.0769 54.4475L34.7372 38.8042C34.3408 38.3718 33.6592 38.3718 33.2629 38.8042L18.2628 55.1678C18.0938 55.3523 18 55.5934 18 55.8436V56C18 59.3137 20.6863 62 24 62Z"
+                                fill="#6FCF97" />
+                            <path
+                                d="M45.4019 25.5C47.0096 24.5718 48.9904 24.5718 50.5981 25.5C52.2058 26.4282 53.1962 28.1436 53.1962 30C53.1962 31.8564 52.2058 33.5718 50.5981 34.5C48.9904 35.4282 47.0096 35.4282 45.4019 34.5C43.7942 33.5718 42.8038 31.8564 42.8038 30C42.8038 28.1436 43.7942 26.4282 45.4019 25.5Z"
+                                fill="#F2C94C" />
+                        </svg>
+                        <p class="tool-description">Insert Image</p>
+                </li>
+                <li class="tool">
+                    <button class="tool--btn" onclick="execCmd('insertHorizontalRule');"><svg class="tool-svg" width="35" height="35"
+                            viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 40L38 40L42 40L62 40" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p class="tool-description">Horizontal Rule</p>
+                    </button>
+                </li>
+            </ul>
+        </div>
+            <iframe onload="enableEditMode();" id="output" name="richTextField"></iframe>
+        <div id="file-displayer-hider">
+            <button onclick="hidefiledisplayer()" class="no-background">
+                <svg id="document-center" width="35" height="35" viewBox="0 0 80 80" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M27.7273 14.1348C27.7273 14.0896 27.7283 14.0447 27.7304 14L21 14C18.2386 14 16 16.2386 16 19L16 57C16 59.7614 18.2386 62 21 62H31L31 40.5718C31 39.5174 31.4163 38.5057 32.1583 37.7567L42.6276 27.1885C43.3787 26.4304 44.4016 26.0038 45.4689 26.0036L54 26.0027V19C54 16.2386 51.7614 14 49 14L42.2696 14C42.2717 14.0447 42.2727 14.0896 42.2727 14.1348C42.2727 15.7074 40.9979 16.9822 39.4253 16.9822H30.5747C29.0021 16.9822 27.7273 15.7074 27.7273 14.1348Z"
+                        fill="#F2C94C" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M42.73 27.0889C43.4703 26.3931 44.4494 26.0038 45.4689 26.0037L58.9996 26.0022C61.2089 26.002 63 27.7929 63 30.0022L63 64.0021C63 66.2113 61.2091 68.0021 59 68.0021H35C32.7909 68.0021 31 66.2113 31 64.0021L31 40.5718C31 39.5551 31.3871 38.5781 32.0801 37.838C31.7326 38.2634 32.0304 38.9238 32.6 38.9238L39.8 38.9238C42.0091 38.9238 43.8 37.1329 43.8 34.9238V27.616C43.8 27.053 43.1531 26.7578 42.73 27.0889Z"
+                        fill="#F2994A" />
+                    <path
+                        d="M32.1257 37.7864L42.6631 27.1477C43.0808 26.726 43.7998 27.0218 43.7998 27.6154V34.9232C43.7998 37.1323 42.0089 38.9232 39.7998 38.9232H32.5998C32.0069 38.9232 31.7085 38.2077 32.1257 37.7864Z"
+                        fill="#F2F2F2" />
+                    <rect x="27.7275" y="11.2881" width="14.5455" height="5.69491" rx="2.84746" fill="#F2994A" />
+                </svg>
+            </button>
+            <di id="filedisplayer">
+                <div class="file-element">
+                    <p>Document</p>
+                </div>
+                <div class="file-element">
+                    <p>Novel</p>
+                </div>
+                <div class="file-element">
+                    <p>Novel</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="organizer-hider" onclick="hideorganizer();"><svg width="35" height="35" viewBox="0 0 80 80"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M27 12C26.4477 12 26 12.4477 26 13V19L53 19C53.5523 19 54 19.4477 54 20L54 55.5487L59.3753 59.8489C60.0301 60.3727 61 59.9066 61 59.0681L61 13C61 12.4477 60.5523 12 60 12L27 12Z"
+                        fill="#EB5757" />
+                    <path
+                        d="M26 19H24C24 20.1046 24.8954 21 26 21V19ZM54 55.5487H52C52 56.1563 52.2762 56.7309 52.7506 57.1104L54 55.5487ZM59.3753 59.8489L60.6247 58.2872H60.6247L59.3753 59.8489ZM28 13C28 13.5523 27.5523 14 27 14V10C25.3431 10 24 11.3431 24 13H28ZM28 19V13H24V19H28ZM26 21L53 21V17L26 17V21ZM53 21C52.4477 21 52 20.5523 52 20H56C56 18.3431 54.6569 17 53 17V21ZM52 20L52 55.5487H56L56 20H52ZM60.6247 58.2872L55.2494 53.9869L52.7506 57.1104L58.1259 61.4107L60.6247 58.2872ZM59 59.0681C59 58.2296 59.9699 57.7634 60.6247 58.2872L58.1259 61.4107C60.0902 62.9821 63 61.5836 63 59.0681H59ZM59 13L59 59.0681H63L63 13H59ZM60 14C59.4477 14 59 13.5523 59 13H63C63 11.3431 61.6568 10 60 10V14ZM27 14L60 14V10L27 10V14Z"
+                        fill="#EB5757" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M19 20C19 19.4477 19.4477 19 20 19L53 19C53.5523 19 54 19.4477 54 20L54 66.0681C54 66.9066 53.0301 67.3727 52.3753 66.8489L37.1247 54.6484C36.7595 54.3563 36.2405 54.3563 35.8753 54.6484L20.6247 66.8489C19.9699 67.3727 19 66.9066 19 66.0681L19 20Z"
+                        fill="#F2C94C" />
+                    <path
+                        d="M20.6247 66.8489L19.3753 65.2872L20.6247 66.8489ZM37.1247 54.6484L38.3741 53.0867L37.1247 54.6484ZM35.8753 54.6484L34.6259 53.0867L35.8753 54.6484ZM52.3753 66.8489L53.6247 65.2872L52.3753 66.8489ZM53 17L20 17V21L53 21V17ZM56 66.0681L56 20H52L52 66.0681L56 66.0681ZM35.8753 56.2102L51.1259 68.4107L53.6247 65.2872L38.3741 53.0867L35.8753 56.2102ZM21.8741 68.4107L37.1247 56.2102L34.6259 53.0867L19.3753 65.2872L21.8741 68.4107ZM17 20L17 66.0681H21L21 20H17ZM19.3753 65.2872C20.0301 64.7634 21 65.2295 21 66.0681H17C17 68.5836 19.9098 69.9821 21.8741 68.4107L19.3753 65.2872ZM38.3741 53.0867C37.2784 52.2102 35.7216 52.2102 34.6259 53.0867L37.1247 56.2102C36.7595 56.5023 36.2405 56.5023 35.8753 56.2102L38.3741 53.0867ZM52 66.0681C52 65.2296 52.9699 64.7634 53.6247 65.2872L51.1259 68.4107C53.0902 69.9821 56 68.5836 56 66.0681L52 66.0681ZM20 17C18.3431 17 17 18.3431 17 20H21C21 20.5523 20.5523 21 20 21V17ZM53 21C52.4477 21 52 20.5523 52 20H56C56 18.3431 54.6569 17 53 17V21Z"
+                        fill="#F2C94C" />
+                </svg>
+            </button>
+            <div id="organizer">
+                <div>
+                    <details>
+                        <summary class="no-outline">
+                            <h1 class="organizer-title">To Do <i id="to-do-circle"
+                                    class="fas fa-circle"></i> </h1>
+                        </summary>
+                        <ol class="hover-bright organizer-list" id="to-do-list">
+                            <div id="todo">
+                                <div class="organizer-item ">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                                <div class="organizer-item">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </ol>
+                    </details>
+                </div>
+                <div>
+                    <details>
+                        <summary class="no-outline">
+                            <h1 class="organizer-title">In Process <i
+                                    id="in-process-circle" class="fas fa-circle"></i> </h1>
+                        </summary>
+                        <ol class="hover-bright organizer-list" id="in-process-list">
+                            <div id="inprocess">
+                                <div class="organizer-item">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                                <div class="organizer-item">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </ol>
+                    </details>
+                </div>
+                <div>
+                    <details>
+                        <summary class="no-outline">
+                            <h1 class="organizer-title">Finished <i
+                                    id="finished-circle" class="fas fa-circle"></i>
+                            </h1>
+                        </summary>
+                        <ol class="hover-bright organizer-list" id="finished-list">
+                            <div id="finished">
+                                <div class="organizer-item">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                                <div class="organizer-item">
+                                    <span class="text">Reverse Engineer SVG files</span>
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </ol>
+                    </details>
+                </div>
+    </main>
+    <script>
+        new Sortable(finished, {
+            animation: 200,
+            group: 'shared',
+            ghostClass: 'background-go'
+        });
+        new Sortable(inprocess, {
+            animation: 200,
+            group: 'shared',
+            ghostClass: 'background-slow'
+        });
+        new Sortable(todo, {
+            animation: 200,
+            group: 'shared',
+            ghostClass: 'background-stop'
+        });
+        new Sortable(listitems, {
+            animation: 200,
+            group: 'listitems',
+            ghostClass: 'background-main'
+        });
+        new Sortable(filedisplayer, {
+            animation: 200,
+            group: 'listitems',
+            ghostClass: 'background-main'
+        })
+    </script>
+</body>
+
+</html>
