@@ -160,7 +160,7 @@ option {
   align-items: center;
   flex-direction: row;
   border-radius: 0px 0px 10px 10px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 #header-options {
   align-items: center;
