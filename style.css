@@ -120,11 +120,8 @@ option {
   max-width: 87.4%;
   min-width: 20%;
   padding: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-top: 3px;
+  margin:auto;
   background: rgba(255, 255, 255, 0.029);
-  color: rgb(255, 255, 255);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 5px;
@@ -178,22 +175,6 @@ option {
   outline: none;
   background: rgba(255, 255, 255, 0);
   color: white;
-}
-#bgchanger {
-  border: none;
-  outline: none;
-  background-color: gainsboro;
-  border-radius: 10px;
-  width: 50px;
-  transition: all 1s ease-in-out;
-}
-#bgchanger:focus {
-  border: none;
-  outline: none;
-  background-color: gainsboro;
-  border-radius: 10px;
-  width: 200px;
-  transition: all 1s ease-in-out;
 }
 
 .header-options-bt {
